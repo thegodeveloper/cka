@@ -27,3 +27,6 @@ find_pods_uid.sh
 6-pv.yaml
 6-pvc.yaml
 6-deploy.yaml
+
+7-node.sh
+7-pod.sh
