@@ -43,6 +43,7 @@
 - [05 - kubectl Sorting - 1%](labs/05-kubectl-sorting.md)
 - [06 - Storage, PV, PVC, Pod Volume - 8%](labs/06-storage-pv-pvc-pod-volume.md)
 - [07 - Node and Resource Usage - 1%](labs/07-node-and-resource-usage.md)
+- [08 - Get Master Information - 2%](labs/08-get-master-information.md)
 
 ## Notes
 

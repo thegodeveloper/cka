@@ -30,3 +30,5 @@ find_pods_uid.sh
 
 7-node.sh
 7-pod.sh
+
+8-master-components.txt
