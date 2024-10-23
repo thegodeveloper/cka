@@ -1,4 +1,4 @@
-# Pod Ready if Service is Reachable
+# Pod Ready if Service is Reachable - 4%
 
 - Create single Pod named `ready-if-service-ready` of image `nginx:1.16.1-alpine`.
 - Configure a `LivenessProbe` which simple runs `true`.

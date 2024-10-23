@@ -1,4 +1,4 @@
-# Scale Down Statefulset
+# Scale Down Statefulset - 1%
 
 ## Create a cluster
 

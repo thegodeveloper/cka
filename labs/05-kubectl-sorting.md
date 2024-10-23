@@ -1,4 +1,4 @@
-# Kubectl Sorting
+# Kubectl Sorting - 1%
 
 - There are various Pods in all namespaces.
 - Write a command into `find_pods.sh` which lists all Pods sorted by their age (`metadata.creationTimestamp`).

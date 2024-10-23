@@ -1,4 +1,4 @@
-# Schedule a Pod on Master Node
+# Schedule a Pod on Master Node - 3%
 
 - Create a single Pod of image `http:2.4.41-alpine` in `default` namespace.
 - The Pod should be named `pod1` and the container should be named `pod1-container`.
