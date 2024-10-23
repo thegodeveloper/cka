@@ -44,6 +44,7 @@
 - [06 - Storage, PV, PVC, Pod Volume - 8%](labs/06-storage-pv-pvc-pod-volume.md)
 - [07 - Node and Resource Usage - 1%](labs/07-node-and-resource-usage.md)
 - [08 - Get Master Information - 2%](labs/08-get-master-information.md)
+- [09 - Kill Scheduler, Manual Scheduling - 5%](labs/09-kill-scheduler-manual-scheduling.md)
 
 ## Notes
 
