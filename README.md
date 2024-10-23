@@ -41,6 +41,7 @@
 - [03 - Scale Down StatefulSet - 1%](labs/03-scale-down-statefulset.md)
 - [04 - Pod Ready if Service is Reachable - 4%](labs/04-pod-ready-if-service-is-reachable.md)
 - [05 - kubectl Sorting - 1%](labs/05-kubectl-sorting.md)
+- [06 - Storage, PV, PVC, Pod Volume - 8%](labs/06-storage-pv-pvc-pod-volume.md)
 
 ## Notes
 
