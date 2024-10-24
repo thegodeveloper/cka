@@ -1,6 +1,6 @@
 # Kill Scheduler, Manual Scheduling - 5%
 
-## Use Context
+## Use Context kind-cka
 
 ```shell
 k config use-context kind-cka

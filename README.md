@@ -45,6 +45,7 @@
 - [07 - Node and Resource Usage - 1%](labs/07-node-and-resource-usage.md)
 - [08 - Get Master Information - 2%](labs/08-get-master-information.md)
 - [09 - Kill Scheduler, Manual Scheduling - 5%](labs/09-kill-scheduler-manual-scheduling.md)
+- [10 - RBAC ServiceAccount Role RoleBinding - 6%](labs/10-rbac-serviceaccount-role-rolebinding.md)
 
 ## Notes
 
