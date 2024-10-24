@@ -46,6 +46,8 @@
 - [08 - Get Master Information - 2%](labs/08-get-master-information.md)
 - [09 - Kill Scheduler, Manual Scheduling - 5%](labs/09-kill-scheduler-manual-scheduling.md)
 - [10 - RBAC ServiceAccount Role RoleBinding - 6%](labs/10-rbac-serviceaccount-role-rolebinding.md)
+- [11 - DaemonSet on all Nodes - 4%](labs/11-daemonset-on-all-nodes.md)
+- [12 - Deployment on all Nodes - 6%](labs/12-deployment-on-all-nodes.md)
 
 ## Notes
 
