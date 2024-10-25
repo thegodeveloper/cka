@@ -15,7 +15,9 @@ Switched to context "kind-cka".
 - Manually schedule that `Pod` on node `cka-control-plane`, make sure it's running.
 - Start the `kube-scheduler` again and confirm its running correctly by creating a second `Pod` named `manual-schedule2` of image `httpd:2.4-alpine` and check if it's running on `cka-control-plane` cluster.
 
-## Find the master node
+## Solution
+
+### Find the master node
 
 ```shell
 k get nodes
@@ -25,7 +27,7 @@ cka-worker          Ready    <none>          20h   v1.29.0
 cka-worker2         Ready    <none>          20h   v1.29.0
 ```
 
-## Connect to cka-control-plane and check if the scheduler is running
+### Connect to cka-control-plane and check if the scheduler is running
 
 ```shell
 docker exec -it cka-control-plane bash
@@ -34,7 +36,7 @@ kube-scheduler-cka-control-plane            1/1     Running   0          20h
 root@cka-control-plane:/#
 ```
 
-## Kill the scheduler temporarily
+### Kill the scheduler temporarily
 
 ```shell
 root@cka-control-plane:/# cd /etc/kubernetes/manifests/
@@ -42,7 +44,7 @@ root@cka-control-plane:/etc/kubernetes/manifests# mv kube-scheduler.yaml ../
 root@cka-control-plane:/etc/kubernetes/manifests#
 ```
 
-## Check the scheduler again
+### Check the scheduler again
 
 The scheduler should be stopped.
 
@@ -51,7 +53,7 @@ root@cka-control-plane:/etc/kubernetes/manifests# kubectl -n kube-system get pod
 root@cka-control-plane:/etc/kubernetes/manifests#
 ```
 
-## Create the manual-schedule Pod
+### Create the manual-schedule Pod
 
 ```shell
 root@cka-control-plane:/etc/kubernetes/manifests# kubectl run manual-schedule --image=httpd:2.4-alpine
@@ -59,7 +61,7 @@ pod/manual-schedule created
 root@cka-control-plane:/etc/kubernetes/manifests#
 ```
 
-## Confirm that has no node assigned
+### Confirm that has no node assigned
 
 ```shell
 root@cka-control-plane:/etc/kubernetes/manifests# kubectl get pod -o wide
@@ -68,27 +70,27 @@ manual-schedule   0/1     Pending   0          54s   <none>   <none>   <none>   
 root@cka-control-plane:/etc/kubernetes/manifests#
 ```
 
-## Manually schedule the Pod
+### Manually schedule the Pod
 
 ```shell
 kubectl get pod manual-schedule -o yaml > 9.yaml
 ```
 
-## Install VIM
+### Install VIM
 
 ```shell
 apt-get update
 apt-get instal vim -y
 ```
 
-## Edit the file
+### Edit the file
 
 ```yaml
 spec:
   nodeName: cka-control-plane
 ```
 
-## Replace the pod
+### Replace the pod
 
 ```shell
 kubectl -f 9.yaml replace --force
@@ -96,7 +98,7 @@ pod "manual-schedule" deleted
 pod/manual-schedule replaced
 ```
 
-## Validate the pod
+### Validate the pod
 
 ```shell
 root@cka-control-plane:~# kubectl get po manual-schedule -o wide
@@ -104,7 +106,7 @@ NAME              READY   STATUS    RESTARTS   AGE   IP           NODE          
 manual-schedule   1/1     Running   0          40s   10.244.0.5   cka-control-plane   <none>           <none>
 ```
 
-## Start the scheduler again
+### Start the scheduler again
 
 ```shell
 cd /etc/kubernetes
@@ -113,21 +115,21 @@ admin.conf  controller-manager.conf  kube-scheduler.yaml  kubelet.conf  manifest
 root@cka-control-plane:/etc/kubernetes# mv kube-scheduler.yaml manifests/
 ```
 
-## Check the scheduler
+### Check the scheduler
 
 ```shell
 root@cka-control-plane:/etc/kubernetes# kubectl -n kube-system get pod | grep kube-scheduler
 kube-scheduler-cka-control-plane            1/1     Running   0          58s
 ```
 
-## Schedule a second pod
+### Schedule a second pod
 
 ```shell
 root@cka-control-plane:/etc/kubernetes# kubectl run manual-schedule2 --image=httpd:2.4-alpine
 pod/manual-schedule2 created
 ```
 
-## Check the pods and their location
+### Check the pods and their location
 
 ```shell
 root@cka-control-plane:/etc/kubernetes# kubectl get pods -o wide

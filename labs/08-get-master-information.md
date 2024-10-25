@@ -27,7 +27,9 @@ dns: [TYPE] [NAME]
 
 Choices of `[TYPE]` are: `not-installed`, `process`, `static-pod`, `pod`.
 
-## Connect to cka-control-plane and get kubelet processes
+## Solution
+
+### Connect to cka-control-plane and get kubelet processes
 
 ```shell
 docker exec -it cka-control-plane bash
@@ -106,7 +108,7 @@ metrics-server   1/1     1            1           128m
 
 Seems `coredns` is controlled via a `Deployment`. We can generate the file with the findings:
 
-## Generating the file
+### Generating the file
 
 ```shell
 kubelet: process

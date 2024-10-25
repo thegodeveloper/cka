@@ -14,14 +14,16 @@ Switched to context "kind-cka".
 - The Pods it creates should request 10 millicore cpu and 10 mebibyte memory.
 - The Pods of that `DaemonSet` should run on all nodes, master and worker nodes.
 
-## Create the Namespace
+## Solution
+
+### Create the Namespace
 
 ```shell
 k create ns project-tiger
 namespace/project-tiger created
 ```
 
-## Create a DaemonSet
+### Create a DaemonSet
 
 ```shell
 k -n project-tiger create deployment ds-important --image=httpd:2.4-alpine -o yaml --dry-run=client > 11.yaml
@@ -61,14 +63,14 @@ spec:
           key: node-role.kubernetes.io/control-plane
 ```
 
-## Apply the YAML file
+### Apply the YAML file
 
 ```shell
 k apply -f 11.yaml
 daemonset.apps/ds-important created
 ```
 
-## Get the DaemonSet
+### Get the DaemonSet
 
 ```shell
 k -n project-tiger get ds
@@ -76,7 +78,7 @@ NAME           DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTO
 ds-important   3         3         3       3            3           <none>          2m43s
 ```
 
-## List the DaemonSet Pods
+### List the DaemonSet Pods
 
 Validate that is also running in `cka-control-plane` node.
 

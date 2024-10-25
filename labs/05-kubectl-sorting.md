@@ -1,5 +1,7 @@
 # Kubectl Sorting - 1%
 
+## Task Definition
+
 - There are various Pods in all namespaces.
 - Write a command into `find_pods.sh` which lists all Pods sorted by their age (`metadata.creationTimestamp`).
 - Write a second command into `find_pods_uid.sh` which lists all Pods sorted by field `metadata.uid`.
@@ -9,14 +11,16 @@
 
 - Go to https://kubernetes.io/docs and search for `cheat sheet`.
 
-## Create the first command
+## Solution
+
+### Create the first command
 
 ```shell
 echo 'kubectl get pods -A --sort-by=.metadata.creationTimestamp' > find_pods.sh
 chmod u+x find_pods.sh
 ```
 
-### Validate the find_pods.sh command
+#### Validate the find_pods.sh command
 
 ```shell
 ./find_pods.sh
@@ -34,14 +38,14 @@ default              ready-if-service-ready                      1/1     Running
 default              am-i-ready                                  1/1     Running   0          23m
 ```
 
-## Create the second command
+### Create the second command
 
 ```shell
 echo 'kubectl get pods -A --sort-by=.metadata.uid' > find_pods_uid.sh
 chmod u+x find_pods_uid.sh
 ```
 
-### Validate the find_pods_uid.sh command
+#### Validate the find_pods_uid.sh command
 
 ```shell
 ./find_pods_uid.sh

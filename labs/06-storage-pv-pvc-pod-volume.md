@@ -23,16 +23,18 @@ Switched to context "kind-cka".
   - Mount the volume at `/tmp/safari-data`.
   - The pods of that Deployment should be of image `httpd:2.4.41-alpine`.
 
-## Create the Namespace
+## Solution
+
+### Create the Namespace
 
 ```shell
 k create ns project-tiger
 namespace/project-tiger created
 ```
 
-## Create the PersistentVolume
+### Create the PersistentVolume
 
-### Get PersistentVolume Definition from Kubernetes Documentation
+#### Get PersistentVolume Definition from Kubernetes Documentation
 
 - Go to https://kubernetes.io/docs.
 - Search for `PersistentVolume` yaml.
@@ -53,22 +55,22 @@ spec:
     path: "/Volumes/Data"
 ```
 
-### Create the PersistentVolume YAML Definition
+#### Create the PersistentVolume YAML Definition
 
 ```shell
 vim 06-pv.yaml
 ```
 
-### Apply the PersistentVolume YAML Definition
+#### Apply the PersistentVolume YAML Definition
 
 ```shell
 k apply -f 6-pv.yaml
 persistentvolume/safari-pv created
 ```
 
-## Create the PersistentVolumeClaim
+### Create the PersistentVolumeClaim
 
-### Get PersistentVolumeClaim Definition from Kubernetes Documentation
+#### Get PersistentVolumeClaim Definition from Kubernetes Documentation
 
 - In the same document scroll down to `Create a PersistentVolumeClaim` and copy the YAML definition and update accordingly to the task.
 
@@ -86,20 +88,20 @@ spec:
       storage: 2Gi
 ```
 
-### Create the PersistentVolumeClaim YAML Definition
+#### Create the PersistentVolumeClaim YAML Definition
 
 ```shell
 vim 6-pvc.yaml
 ```
 
-### Apply the PersistentVolumeClaim YAML Definition
+#### Apply the PersistentVolumeClaim YAML Definition
 
 ```shell
 k apply -f 6-pvc.yaml
 persistentvolumeclaim/safari-pvc created
 ```
 
-### List the PersistentVolumeClaim
+#### List the PersistentVolumeClaim
 
 ```shell
 k -n project-tiger get pvc,pv
@@ -110,13 +112,13 @@ NAME                         CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS  
 persistentvolume/safari-pv   2Gi        RWO            Retain           Available                          <unset>                          10m
 ```
 
-## Create the Deployment
+### Create the Deployment
 
-### Get the VolumeDefinition
+#### Get the VolumeDefinition
 
 - In the same document scroll down to `Create a Pod` and create the volume definition accordingly to the task.
 
-### VolumeYaml Definition
+#### VolumeYaml Definition
 
 ```yaml
 spec:
@@ -132,7 +134,7 @@ spec:
           name: data
 ```
 
-### Create the Deployment YAML Definition
+#### Create the Deployment YAML Definition
 
 ```shell
 k -n project-tiger create deploy safari --image=httpd:2.4.41-alpine -o yaml --dry-run=client > 6-deploy.yaml
@@ -140,14 +142,14 @@ k -n project-tiger create deploy safari --image=httpd:2.4.41-alpine -o yaml --dr
 
 And update the `volumes` and `volumeMounts` entries.
 
-### Apply the Deployment YAML Definition
+#### Apply the Deployment YAML Definition
 
 ```shell
 k -n project-tiger apply -f 6-deploy.yaml
 deployment.apps/safari created
 ```
 
-### Validate the Deployment
+#### Validate the Deployment
 
 ```shell
 k -n project-tiger get deploy
@@ -155,7 +157,7 @@ NAME     READY   UP-TO-DATE   AVAILABLE   AGE
 safari   1/1     1            1           43s
 ```
 
-### Validate the PersistentVolume and PersistentVolumeClaim
+#### Validate the PersistentVolume and PersistentVolumeClaim
 
 ```shell
 k -n project-tiger get pv,pvc
@@ -167,7 +169,7 @@ NAME                               STATUS   VOLUME                              
 persistentvolumeclaim/safari-pvc   Bound    pvc-5c6d3ef3-c5a1-4c60-b286-e9060a58e465   2Gi        RWO            standard       <unset>                 17m
 ```
 
-### Validate the Deployment Pod Mount
+#### Validate the Deployment Pod Mount
 
 ```shell
 k -n project-tiger describe pod safari-748b65955-drvdr | grep -A2 Mounts:

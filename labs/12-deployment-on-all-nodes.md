@@ -16,20 +16,22 @@ Switched to context "kind-cka".
 - We have two worker nodes: `cka-worker` and `cka-worker2`.
 - Because the Deployment has tree replicas the result should be that on both nodes one Pod is running. The third Pod won't be scheduled, unless a new worker node will be added.
 
-## Create a Namespace
+## Solution
+
+### Create a Namespace
 
 ```shell
 k create ns project-tiger
 namespace/project-tiger created
 ```
 
-## Create the Deployment YAML Definition
+### Create the Deployment YAML Definition
 
 ```shell
 k -n project-tiger create deployment deploy-important --image=nginx:1.7.6-alpine --replicas=3 -o yaml --dry-run=client > 12.yaml
 ```
 
-## Change the YAML Definition
+### Change the YAML Definition
 
 Additional to add a second container, the important task is to prevent two containers to run in the same node. We need to add a `podAntiAffinity` rule and for the `matchExpressions` we need to add the Deployment labels.
 
@@ -85,14 +87,14 @@ spec:
         name: container2
 ```
 
-## Apply the YAML Definition
+### Apply the YAML Definition
 
 ```shell
 k apply -f 12.yaml
 deployment.apps/deploy-important created
 ```
 
-## Validate the Pods Distribution in the Cluster
+### Validate the Pods Distribution in the Cluster
 
 ```shell
 k -n project-tiger get pod -o wide

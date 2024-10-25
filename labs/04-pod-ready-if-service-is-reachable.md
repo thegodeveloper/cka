@@ -1,5 +1,7 @@
 # Pod Ready if Service is Reachable - 4%
 
+## Task Definition
+
 - Create single Pod named `ready-if-service-ready` of image `nginx:1.16.1-alpine`.
 - Configure a `LivenessProbe` which simple runs `true`.
 - Also configure a `ReadinessProbe` which does check if the url `http://service-am-i-ready:80` is reachable.
@@ -21,13 +23,15 @@ k apply -f yaml-definitions/lab4-service-am-i-ready.yaml
 service/service-am-i-ready created
 ```
 
-## Create the first Pod
+## Solution
+
+### Create the first Pod
 
 ```shell
 k run ready-if-service-ready --image=nginx:1.16.1-alpine --dry-run=client -o yaml > 4_pod1.yaml
 ```
 
-## Add the livenessProbe and readinessProbe
+### Add the livenessProbe and readinessProbe
 
 ```yaml
 image:
@@ -43,14 +47,14 @@ readinessProbe:
       - 'wget -T2 -O- http://service-am-i-ready:80'
 ```
 
-## Create the Pod
+### Create the Pod
 
 ```shell
 k apply -f 4_pod1.yaml
 pod/ready-if-service-ready created
 ```
 
-## Validate the Pod
+### Validate the Pod
 
 The Ready column should be 0/1.
 
@@ -60,14 +64,14 @@ NAME                     READY   STATUS    RESTARTS   AGE
 ready-if-service-ready   0/1     Running   0          2m8s
 ```
 
-## Create the second Pod
+### Create the second Pod
 
 ```shell
 k run am-i-ready --image=nginx:1.16.1-alpine --labels="id=cross-server-ready"
 pod/am-i-ready created
 ```
 
-## Validate the Existing Service Endpoint
+### Validate the Existing Service Endpoint
 
 ```shell
 k describe svc service-am-i-ready
@@ -95,7 +99,7 @@ kubernetes           172.18.0.2:6443   27m
 service-am-i-ready   10.244.0.6:80     2m4s
 ```
 
-## Validate the Pods
+### Validate the Pods
 
 The `ready-if-service-ready` Pod now should have a `READY 1/1`.
 

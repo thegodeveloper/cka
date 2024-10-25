@@ -13,21 +13,23 @@ Switched to context "kind-cka".
 - Create a `Role` and `RoleBinding`, both named `processor` as well.
 - These should allow the new `ServiceAccount` to only create `Secrets` and `ConfigMaps` in the Namespace.
 
-## Create the project-hamster namespace
+## Solution
+
+### Create the project-hamster namespace
 
 ```shell
 k create ns project-hamster
 namespace/project-hamster created
 ```
 
-## Create the ServiceAccount
+### Create the ServiceAccount
 
 ```shell
 k -n project-hamster create sa processor
 serviceaccount/processor created
 ```
 
-## Create a Role named processor
+### Create a Role named processor
 
 ```shell
 k -n project-hamster create role processor \
@@ -37,7 +39,7 @@ k -n project-hamster create role processor \
 role.rbac.authorization.k8s.io/processor created
 ```
 
-## Create the RoleBinding
+### Create the RoleBinding
 
 ```shell
 k -n project-hamster create rolebinding processor \
@@ -46,16 +48,16 @@ k -n project-hamster create rolebinding processor \
 rolebinding.rbac.authorization.k8s.io/processor created
 ```
 
-## Validate the permissions
+### Validate the permissions
 
 
-### Get auth can-i examples
+#### Get auth can-i examples
 
 ```shell
 k auth can-i -h
 ```
 
-### Validate if the ServiceAccount can create secrets
+#### Validate if the ServiceAccount can create secrets
 
 ```shell
 k -n project-hamster auth can-i create secret \
@@ -63,7 +65,7 @@ k -n project-hamster auth can-i create secret \
 yes
 ```
 
-### Validate if the ServiceAccount can create configmap
+#### Validate if the ServiceAccount can create configmap
 
 ```shell
 k -n project-hamster auth can-i create configmap \
@@ -71,7 +73,7 @@ k -n project-hamster auth can-i create configmap \
 yes
 ```
 
-### Validate if the ServiceAccount can create pod
+#### Validate if the ServiceAccount can create pod
 
 ```shell
 k -n project-hamster auth can-i create pod \
@@ -79,7 +81,7 @@ k -n project-hamster auth can-i create pod \
 no
 ```
 
-## Validate if the ServiceAccount can delete secret
+### Validate if the ServiceAccount can delete secret
 
 ```shell
 k -n project-hamster auth can-i delete secret \
@@ -87,7 +89,7 @@ k -n project-hamster auth can-i delete secret \
 no
 ```
 
-### Validate if the ServiceAccount can get configmap 
+#### Validate if the ServiceAccount can get configmap 
 
 ```shell
 k -n project-hamster auth can-i get configmap \

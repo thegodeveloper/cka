@@ -4,6 +4,8 @@
 - Write a command to display the current context into `context_default_kubectl.sh` using kubectl
 - Write a command to display the current context into `context_default_no_kubectl.sh` without using kubectl
 
+## Solution
+
 ### Write all the contexts names into contexts.txt file
 
 ```shell

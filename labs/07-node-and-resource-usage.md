@@ -62,7 +62,9 @@ NAME                              READY   STATUS    RESTARTS   AGE
 metrics-server-684dd857fc-qb5d2   1/1     Running   0          2m8s
 ```
 
-## List the top options
+## Solution
+
+### List the top options
 
 ```shell
 k top -h
@@ -83,7 +85,7 @@ Use "kubectl top <command> --help" for more information about a given command.
 Use "kubectl options" for a list of global command-line options (applies to all commands).
 ```
 
-## Create the 7-node.sh script
+### Create the 7-node.sh script
 
 ```shell
 echo 'kubectl top node' > 7-node.sh
@@ -91,9 +93,9 @@ chmod u+x 7-node.sh
 ./7-node.sh
 ```
 
-## Create the 7-pod.sh script
+### Create the 7-pod.sh script
 
-### Check the documentation
+#### Check the documentation
 
 ```shell
 k top pod -h
@@ -101,7 +103,7 @@ k top pod -h
     If present, print usage of containers within a pod.
 ```
 
-### Create the script
+#### Create the script
 
 ```shell
 echo 'kubectl top pod --containers=true' > 7-pod.sh
