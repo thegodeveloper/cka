@@ -112,3 +112,11 @@ Fri Oct 25 02:01:59 UTC 2024
 Fri Oct 25 02:02:00 UTC 2024
 ```
 
+## Clean the Environment
+
+### Delete the Pod
+
+```shell
+k delete pod multi-container-playground
+pod "multi-container-playground" deleted
+```

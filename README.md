@@ -49,6 +49,7 @@
 - [11 - DaemonSet on all Nodes - 4%](labs/11-daemonset-on-all-nodes.md)
 - [12 - Deployment on all Nodes - 6%](labs/12-deployment-on-all-nodes.md)
 - [13 - Multi Containers and Pod Shared Volume - 4%](labs/13-mult-containers-and-pod-shared-volume.md)
+- [14 - Find out Cluster Information - 2%](labs/14-find-out-cluster-information.md)
 
 ## Notes
 
