@@ -219,3 +219,45 @@ spec:
 k apply -f yaml-definitions/configmap-pod.yaml
 pod/configmap-pod created
 ```
+
+## Create a Mongo DB Deployment without Volumes
+
+```shell
+k apply -f yaml-definitions/mongodb-deployment.yaml
+deployment.apps/mongo created
+```
+
+```shell
+k apply -f yaml-definitions/mongodb-service.yaml
+service/mongo-svc created
+```
+
+## Create a Persistent Volume
+
+```shell
+k apply -f yaml-definitions/mongodb-pv.yaml
+persistentvolume/mongo-pv created
+```
+
+### List Persistent Volume
+
+```shell
+k get pv
+NAME       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
+mongo-pv   5Gi        RWX            Retain           Available                          <unset>                          28s
+```
+
+### Create a Persistent Volume Claim
+
+```shell
+k apply -f yaml-definitions/mongodb-pvc.yaml
+persistentvolumeclaim/mongo-pvc created
+```
+
+### List the Persistent Volume Claim
+
+```shell
+k get pvc
+NAME        STATUS   VOLUME     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+mongo-pvc   Bound    mongo-pv   5Gi        RWX                           <unset>                 42s
+```
