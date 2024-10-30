@@ -183,3 +183,39 @@ Volumes:
     ClaimName:  claim-02833
     ReadOnly:   false
 ```
+
+## Volume of type configMap
+
+- The data stored in a `ConfigMap` can be referenced in a volume of type `configMap` and then consumed by containerized applications running in a pod.
+- The `log-config` ConfigMap is mounted as a volume, and all contents stored in its `log_level` entry are mounted into the Pod at path `/etc/config/log_level`.
+- A ConfigMap is always mounted as `readOnly`.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-pod
+spec:
+  containers:
+    - name: test
+      image: busybox:1.28
+      command: ['sh', '-c', 'echo "The app is running!" && tail -f /dev/null']
+      volumeMounts:
+        - name: config-vol
+          mountPath: /etc/config
+  volumes:
+    - name: config-vol
+      configMap:
+        name: log-config
+        items:
+          - key: log_level
+            path: log_level
+```
+
+- Create the `log-config` ConfigMap before applying the YAML definition.
+- Apply the `configmap-pod.yaml` file in the cluster.
+
+```shell
+k apply -f yaml-definitions/configmap-pod.yaml
+pod/configmap-pod created
+```
