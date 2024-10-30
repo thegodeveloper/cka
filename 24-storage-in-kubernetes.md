@@ -177,11 +177,9 @@ frontend0113-d79c45fd4-qqwm9   1/1     Running   0          70s
 
 ```shell
 k describe pod frontend0113-d79c45fd4-qqwm9
-...
 Volumes:
   vol-33:
     Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
     ClaimName:  claim-02833
     ReadOnly:   false
-...
 ```
