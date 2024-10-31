@@ -36,3 +36,7 @@ find_pods_uid.sh
 11.yaml
 12.yaml
 13.yaml
+
+cluster-events.sh
+pod_kill.log
+container_kill.log
