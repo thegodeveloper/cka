@@ -40,3 +40,5 @@ find_pods_uid.sh
 cluster-events.sh
 pod_kill.log
 container_kill.log
+namespaced_resources.txt
+crowded-namespace.txt

@@ -51,6 +51,7 @@
 - [13 - Multi Containers and Pod Shared Volume - 4%](labs/13-mult-containers-and-pod-shared-volume.md)
 - [14 - Find out Cluster Information - 2%](labs/14-find-out-cluster-information.md)
 - [15 - Cluster Event Logging - 3%](labs/15-cluster-event-logging.md)
+- [16 - Namespaces and API Resources - 2%](labs/16-namespaces-and-api-resources.md)
 
 ## Notes
 
