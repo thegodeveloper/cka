@@ -34,6 +34,10 @@
 - [29 - Network Troubleshooting](29-network-troubleshooting.md)
 - [30 - Troubleshooting Services](30-troubleshooting-services.md)
 
+## Workloads and Scheduling
+
+- [1 - Labels and Selectors](workloads-and-scheduling/01-labels-and-selectors.md)
+
 ## Labs
 
 - [01 - Contexts - 1%](labs/01-contexts.md)
