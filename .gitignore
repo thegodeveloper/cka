@@ -42,3 +42,5 @@ pod_kill.log
 container_kill.log
 namespaced_resources.txt
 crowded-namespace.txt
+
+17.yaml
