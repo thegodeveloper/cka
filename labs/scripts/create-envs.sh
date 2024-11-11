@@ -17,8 +17,8 @@ kubectl apply -f yaml-definitions/statefulset-o3db.yaml
 kubectl apply -f yaml-definitions/lab4-service-am-i-ready.yaml
 
 # Lab 07
-helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
-helm repo update
+helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/ >/dev/null 2>&1 || true
+helm repo update >/dev/null 2>&1 || true
 helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metrics-server/metrics-server --namespace kube-system
 
 # Lab 11, 12, 17
