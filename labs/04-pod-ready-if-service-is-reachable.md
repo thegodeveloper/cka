@@ -31,6 +31,9 @@ service/service-am-i-ready created
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Create the first Pod
 
 ```shell
@@ -115,3 +118,4 @@ NAME                     READY   STATUS    RESTARTS   AGE
 am-i-ready               1/1     Running   0          13m
 ready-if-service-ready   1/1     Running   0          20m
 ```
+</details>

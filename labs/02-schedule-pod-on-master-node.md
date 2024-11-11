@@ -15,6 +15,9 @@ kubectl config use-context kind-k8s-c1
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Find the master nodes and their taints
 
 #### List the nodes
@@ -97,3 +100,4 @@ pod1   1/1     Running   0          9s    10.244.0.6   k8s-c1-control-plane   <n
 ```shell
 echo 'master nodes usually have a taint defined' > master_schedule_reason.txt
 ```
+</details>

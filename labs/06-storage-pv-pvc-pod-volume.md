@@ -24,6 +24,9 @@ kubectl config use-context kind-k8s-c1
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Create the Namespace
 
 ```shell
@@ -176,3 +179,4 @@ k -n project-tiger describe pod safari-748b65955-drvdr | grep -A2 Mounts:
       /tmp/safari-data from data (rw)
       /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-l7xb2 (ro)
 ```
+</details>

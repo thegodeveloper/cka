@@ -8,6 +8,9 @@
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Validate the Pods
 
 ```shell
@@ -88,3 +91,4 @@ k delete ns project-c13
 ```shell
 kind delete cluster --name cka
 ```
+</details>

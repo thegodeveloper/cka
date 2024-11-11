@@ -19,6 +19,9 @@ kubectl config use-context kind-k8s-c1
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Create the first command
 
 ```shell
@@ -68,3 +71,4 @@ kube-system          coredns-76f75df574-pfc4l                    1/1     Running
 local-path-storage   local-path-provisioner-6f8956fb48-6ht9m     1/1     Running   0          43m
 kube-system          kube-apiserver-cka-control-plane            1/1     Running   0          44m
 ```
+</details>
