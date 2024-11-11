@@ -2,7 +2,10 @@
 
 cd ../../
 
-# Create k8s-c3 cluster
+####### Create k8s-c1 cluster #######
+kind create cluster --name k8s-c1 --config yaml-definitions/cluster.yaml
+
+####### Create k8s-c3 cluster #######
 kind create cluster --name k8s-c3 --config yaml-definitions/cluster.yaml
 
 # Install vim

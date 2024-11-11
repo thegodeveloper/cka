@@ -1,5 +1,13 @@
 # Schedule a Pod on Master Node - 3%
 
+## Use Context
+
+```shell
+kubectl config use-context kind-k8s-c1
+```
+
+## Task Definition
+
 - Create a single Pod of image `http:2.4.41-alpine` in `default` namespace.
 - The Pod should be named `pod1` and the container should be named `pod1-container`.
 - This Pod should `only` be scheduled on a master node, do not add new labels to any nodes.
@@ -13,25 +21,25 @@
 
 ```shell
 k get nodes
-NAME                STATUS   ROLES           AGE   VERSION
-cka-control-plane   Ready    control-plane   39s   v1.29.0
-cka-worker          Ready    <none>          15s   v1.29.0
-cka-worker2         Ready    <none>          15s   v1.29.0
+NAME                   STATUS   ROLES           AGE   VERSION
+k8s-c1-control-plane   Ready    control-plane   39s   v1.29.0
+k8s-c1-worker          Ready    <none>          15s   v1.29.0
+k8s-c1-worker2         Ready    <none>          15s   v1.29.0
 ```
 
 #### Get the master node taints and labels 
 
 ```shell
-k describe node cka-control-plane | grep Taint
+k describe node k8s-c1-control-plane | grep Taint
 Taints:             node-role.kubernetes.io/control-plane:NoSchedule
 ```
 
 ```shell
-k describe node cka-control-plane | grep Labels -A 10
+k describe node k8s-c1-control-plane | grep Labels -A 10
 Labels:             beta.kubernetes.io/arch=arm64
                     beta.kubernetes.io/os=linux
                     kubernetes.io/arch=arm64
-                    kubernetes.io/hostname=cka-control-plane
+                    kubernetes.io/hostname=k8s-c1-control-plane
                     kubernetes.io/os=linux
                     node-role.kubernetes.io/control-plane=
                     node.kubernetes.io/exclude-from-external-load-balancers=
@@ -43,8 +51,8 @@ CreationTimestamp:  Tue, 24 Sep 2024 21:53:38 -0500
 
 ```shell
 k get node cka-control-plane --show-labels
-NAME                STATUS   ROLES           AGE     VERSION   LABELS
-cka-control-plane   Ready    control-plane   4m17s   v1.29.0   beta.kubernetes.io/arch=arm64,beta.kubernetes.io/os=linux,kubernetes.io/arch=arm64,kubernetes.io/hostname=cka-control-plane,kubernetes.io/os=linux,node-role.kubernetes.io/control-plane=,node.kubernetes.io/exclude-from-external-load-balancers=
+NAME                   STATUS   ROLES           AGE     VERSION   LABELS
+k8s-c1-control-plane   Ready    control-plane   4m17s   v1.29.0   beta.kubernetes.io/arch=arm64,beta.kubernetes.io/os=linux,kubernetes.io/arch=arm64,kubernetes.io/hostname=k8s-c1-control-plane,kubernetes.io/os=linux,node-role.kubernetes.io/control-plane=,node.kubernetes.io/exclude-from-external-load-balancers=
 ```
 
 #### Create the Pod Template
@@ -81,7 +89,7 @@ pod/pod1 created
 ```shell
 k get pod pod1 -o wide
 NAME   READY   STATUS    RESTARTS   AGE   IP           NODE                NOMINATED NODE   READINESS GATES
-pod1   1/1     Running   0          9s    10.244.0.6   cka-control-plane   <none>           <none>
+pod1   1/1     Running   0          9s    10.244.0.6   k8s-c1-control-plane   <none>           <none>
 ```
 
 #### Short Reason why Pods are not schedule on master nodes by default
