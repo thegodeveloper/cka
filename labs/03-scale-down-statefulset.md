@@ -1,16 +1,5 @@
 # Scale Down Statefulset - 1%
 
-## Create a cluster
-
-Follow the instructions at [Create a Single Node](../00-create-cluster.md#create-a-single-node).
-
-## Deploy a Statefulset
-
-```shell
-k apply -f yaml-definitions/statefulset-o3db.yaml
-statefulset.apps/o3db created
-```
-
 ## Task Definition
 
 - There are two Pods named `o3db-*` in Namespace `project-c13`.

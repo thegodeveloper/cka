@@ -1,5 +1,11 @@
 # Namespaces & API Resources - 2%
 
+## Use context
+
+```shell
+kubectl config use-context kind-k8s-c1
+```
+
 ## Task Definition
 
 - Create Namespace called `cka-master`.

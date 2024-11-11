@@ -1,5 +1,11 @@
 # Pod Ready if Service is Reachable - 4%
 
+## Use context
+
+```shell
+kubectl config use-context kind-k8s-c1
+```
+
 ## Task Definition
 
 - Create single Pod named `ready-if-service-ready` of image `nginx:1.16.1-alpine`.

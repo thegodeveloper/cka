@@ -1,5 +1,11 @@
 # Find Container of Pod & Check Info
 
+## Use context
+
+```shell
+kubectl config use-context kind-k8s-c1
+```
+
 ## Task Definition
 
 - Create a namespace `project-tiger`.
@@ -11,12 +17,6 @@
   - Write the logs of the container into `pod-container.log`.
 
 ## Solution
-
-### Create a namespace
-
-```shell
-k create ns project-tiger
-```
 
 ### Create tigers-reunite Pod
 

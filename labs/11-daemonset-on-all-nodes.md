@@ -3,25 +3,17 @@
 ## Use Context kind-cka
 
 ```shell
-k config use-context kind-cka
-Switched to context "kind-cka".
+kubectl config use-context kind-k8s-c1
 ```
 
 ## Task Definition
 
-- Create a Namespace named `project-tiger`.
+- Use the Namespace named `project-tiger`.
 - Create a `DaemonSet` named `ds-important` with image `httpd:2.4-alpine` and labels `id=ds-important` and `uuid=18426a0b-5f59-4e10-923f-c0e078e82462`.
 - The Pods it creates should request 10 millicore cpu and 10 mebibyte memory.
 - The Pods of that `DaemonSet` should run on all nodes, master and worker nodes.
 
 ## Solution
-
-### Create the Namespace
-
-```shell
-k create ns project-tiger
-namespace/project-tiger created
-```
 
 ### Create a DaemonSet
 

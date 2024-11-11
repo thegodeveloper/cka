@@ -1,5 +1,11 @@
 # Cluster Event Logging - 3%
 
+## Use context
+
+```shell
+kubectl config use-context kind-k8s-c2
+```
+
 ## Task Definition
 
 - Write a command into `cluster-events.sh` which shows the latest events in the whole cluster, ordered by time. Use `kubectl` for it.

@@ -1,10 +1,9 @@
 # Multi Container and Pod Shared Volume - 4%
 
-## Use Context kind-cka
+## Use Context
 
 ```shell
-k config use-context kind-cka
-Switched to context "kind-cka".
+kubectl config use-context kind-k8s-c1
 ```
 
 ## Task Definition

@@ -1,5 +1,11 @@
 # Kubectl Sorting - 1%
 
+## Use context
+
+```shell
+kubectl config use-context kind-k8s-c1
+```
+
 ## Task Definition
 
 - There are various Pods in all namespaces.

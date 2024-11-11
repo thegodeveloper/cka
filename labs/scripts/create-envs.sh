@@ -3,9 +3,24 @@
 cd ../../
 
 ####### Create k8s-c1 cluster #######
+echo 'creating k8s-c1 cluster'
 kind create cluster --name k8s-c1 --config yaml-definitions/cluster.yaml
 
+# Use context
+kubectl config use-context kind-k8s-c1
+
+# Lab 03
+kubectl apply -f yaml-definitions/statefulset-o3db.yaml
+
+# Lab 11, 12, 17
+kubectl create namespace project-tiger
+
+####### Create k8s-c2 #######
+echo 'creating k8s-c2 cluster'
+kind create cluster --name k8s-c2 --config yaml-definitions/cluster.yaml
+
 ####### Create k8s-c3 cluster #######
+echo 'creating k8s-c3 cluster'
 kind create cluster --name k8s-c3 --config yaml-definitions/cluster.yaml
 
 # Install vim
