@@ -8,7 +8,6 @@
 
 <details>o
   <summary>Show the solution</summary>
-
 ### Write all the contexts names into contexts.txt file
 
 ```shell
