@@ -10,6 +10,7 @@ kind create cluster --name k8s-c1 --config yaml-definitions/cluster.yaml
 kubectl config use-context kind-k8s-c1
 
 # Lab 03
+kubectl create namespace project-c13
 kubectl apply -f yaml-definitions/statefulset-o3db.yaml
 
 # Lab 04
