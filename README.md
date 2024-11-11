@@ -70,4 +70,5 @@
 - The labs environments should be on different clusters names.
 - Create a script that validates the solutions of the labs and generates a score.
 - Update the labs questions according to latest Kubernetes version.
+- Group environments in clusters.
 - Organize the directory structure.
