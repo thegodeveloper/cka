@@ -17,6 +17,9 @@ kubectl config use-context kind-k8s-c1
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Create the Deployment YAML Definition
 
 ```shell
@@ -118,3 +121,4 @@ No resources found in project-tiger namespace.
 k delete ns project-tiger
 namespace "project-tiger" deleted
 ```
+</details>

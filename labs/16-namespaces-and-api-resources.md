@@ -14,6 +14,9 @@ kubectl config use-context kind-k8s-c1
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Create Namespace
 
 ```shell
@@ -47,3 +50,4 @@ k -n namespace_name get role --no-headers | wc -l
 vi crowded-namespace.txt
 project-x with (n) resources
 ```
+</details>

@@ -15,6 +15,9 @@ kubectl config use-context kind-k8s-c3
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Validate the nodes in the cluster
 
 ```shell
@@ -226,3 +229,4 @@ Pod was scheduled in the `lab18-worker` node.
 ```shell
 echo 'wrong path to kubelet binary specified in service config' > 18-reason.txt
 ```
+</details>

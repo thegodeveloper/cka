@@ -63,6 +63,9 @@ metrics-server-684dd857fc-qb5d2   1/1     Running   0          2m8s
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### List the top options
 
 ```shell
@@ -109,4 +112,4 @@ echo 'kubectl top pod --containers=true' > 7-pod.sh
 chmod u+x 7-pod.sh
 ./7-pod.sh
 ```
-
+</details>

@@ -28,6 +28,9 @@ Choices of `[TYPE]` are: `not-installed`, `process`, `static-pod`, `pod`.
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Connect to cka-control-plane and get kubelet processes
 
 ```shell
@@ -117,3 +120,4 @@ kube-controller-manager: static-pod
 etcd: pod
 dns: pod coredns
 ```
+</details>

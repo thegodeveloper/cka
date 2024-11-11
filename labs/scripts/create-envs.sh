@@ -12,6 +12,9 @@ kubectl config use-context kind-k8s-c1
 # Lab 03
 kubectl apply -f yaml-definitions/statefulset-o3db.yaml
 
+# Lab 04
+kubectl apply -f yaml-definitions/lab4-service-am-i-ready.yaml
+
 # Lab 11, 12, 17
 kubectl create namespace project-tiger
 

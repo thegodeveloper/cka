@@ -15,6 +15,9 @@ kubectl config use-context kind-k8s-c1
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Create a DaemonSet
 
 ```shell
@@ -81,3 +84,4 @@ ds-important-6rf7v   1/1     Running   0          3m18s   10.244.0.5   cka-contr
 ds-important-sb7xr   1/1     Running   0          3m18s   10.244.2.2   cka-worker          <none>           <none>
 ds-important-sjr47   1/1     Running   0          3m18s   10.244.1.2   cka-worker2         <none>           <none>
 ```
+</details>

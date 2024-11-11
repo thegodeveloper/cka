@@ -18,6 +18,9 @@ kubectl config use-context kind-k8s-c1
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Create tigers-reunite Pod
 
 ```shell
@@ -35,4 +38,4 @@ pod/tigers-reunite created
 k -n project-tiger get pod tigers-reunite -o jsonpath='{.spec.nodeName}'
 devops-pool-g8373
 ```
-
+</details>

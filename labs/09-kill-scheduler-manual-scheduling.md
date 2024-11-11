@@ -16,6 +16,9 @@ kubectl config use-context kind-k8s-c2
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Find the master node
 
 ```shell
@@ -136,3 +139,4 @@ NAME               READY   STATUS    RESTARTS   AGE    IP           NODE        
 manual-schedule    1/1     Running   0          5m1s   10.244.0.5   k8s-c2-control-plane   <none>           <none>
 manual-schedule2   1/1     Running   0          43s    10.244.2.4   k8s-c2-worker          <none>           <none>
 ```
+</details>

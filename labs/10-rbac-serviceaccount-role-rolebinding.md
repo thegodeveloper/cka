@@ -14,6 +14,9 @@ kubectl config use-context kind-k8s-c1
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Create the project-hamster namespace
 
 ```shell
@@ -95,3 +98,4 @@ k -n project-hamster auth can-i get configmap \
   --as system:serviceaccount:project-hasmter:processor
 no
 ```
+</details>

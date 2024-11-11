@@ -14,6 +14,9 @@ kubectl config use-context kind-k8s-c2
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Write the command cluster-events.sh
 
 ```shell
@@ -98,3 +101,4 @@ kube-system          81s         Normal    Pulled                    pod/kube-pr
 kube-system          80s         Normal    Started                   pod/kube-proxy-7ln7q                            Started container kube-proxy
 default              80s         Normal    Starting                  node/cka-worker
 ```
+</details>

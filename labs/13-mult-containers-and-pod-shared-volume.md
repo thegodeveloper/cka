@@ -20,6 +20,9 @@ kubectl config use-context kind-k8s-c1
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### Create the Pod YAML Template
 
 ```shell
@@ -119,3 +122,4 @@ Fri Oct 25 02:02:00 UTC 2024
 k delete pod multi-container-playground
 pod "multi-container-playground" deleted
 ```
+</details>

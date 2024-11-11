@@ -18,17 +18,6 @@ kubectl config use-context kind-k8s-c1
 
 It's a bit of an anti-pattern for one Pod to check another Pod for being ready using probes, hence the normally available `readinessProbe.httpGet` doesn't work for absolute remote urls. Still the workaround requested in this task should show how probes and Pod<->Service communication works.
 
-## Create a cluster
-
-Follow the instructions at [Create a Single Node](../00-create-cluster.md#create-a-single-node).
-
-## Create the Required Resources for the Lab
-
-```shell
-k apply -f yaml-definitions/lab4-service-am-i-ready.yaml
-service/service-am-i-ready created
-```
-
 ## Solution
 
 <details>

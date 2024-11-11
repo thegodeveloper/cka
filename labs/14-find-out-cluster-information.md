@@ -28,6 +28,9 @@ Write your answers into file `cluster-info.txt`, structured like this:
 
 ## Solution
 
+<details>
+  <summary>Show the solution</summary>
+
 ### How many master and worker nodes are available?
 
 ```shell
@@ -76,4 +79,4 @@ The resulting `cluster-info.txt` file could look like:
 4: kindnet, /etc/cni/net.d/10-kindnet.conflist
 5: -cka-worker
 ```
-
+</details>
