@@ -56,7 +56,18 @@
 - [14 - Find out Cluster Information - 2%](labs/14-find-out-cluster-information.md)
 - [15 - Cluster Event Logging - 3%](labs/15-cluster-event-logging.md)
 - [16 - Namespaces and API Resources - 2%](labs/16-namespaces-and-api-resources.md)
+- [17 - Find Container of Pod and Check Info - 3%](labs/18-fix-kubelet.md)
+- [18 - Fix Kubelet - %8](labs/18-fix-kubelet.md)
 
 ## Notes
 
 - [99 - To Remember](99-to-remember.md)
+
+## ToDo
+
+- Create a script that prepares the labs environments.
+- Create a script that deletes the labs environments.
+- The labs environments should be on different clusters names.
+- Create a script that validates the solutions of the labs and generates a score.
+- Update the labs questions according to latest Kubernetes version.
+- Organize the directory structure.
