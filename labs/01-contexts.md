@@ -6,6 +6,9 @@
 
 ## Solution
 
+<details>o
+  <summary>Show the solution</summary>
+
 ### Write all the contexts names into contexts.txt file
 
 ```shell
@@ -45,3 +48,4 @@ chmod u+x context_default_no_kubectl.sh
 ./context_default_no_kubectl.sh
 docker-desktop
 ```
+</details>
