@@ -3,13 +3,13 @@
 ## Use context
 
 ```shell
-kubectl config use-context kind-lab18
+kubectl config use-context kind-k8s-c3
 ```
 
 ## Task Definition
 
 - Seems that `kubelet` service is not running in the `cka-worker` node.
-- Fix it and confirm that cluster has node `cka-worker` available in Ready state afterwards.
+- Fix it and confirm that cluster has node `k8s-c3-worker` available in Ready state afterwards.
 - You should be able to schedule a `Pod` on cluster `cka-worker afterwards.
 - Write the reason of the issue into `18-reason.txt`.
 
@@ -19,27 +19,27 @@ kubectl config use-context kind-lab18
 
 ```shell
 k get nodes
-NAME                  STATUS     ROLES           AGE     VERSION
-lab18-control-plane   Ready      control-plane   5m35s   v1.29.0
-lab18-worker          NotReady   <none>          5m11s   v1.29.0
-lab18-worker2         Ready      <none>          5m14s   v1.29.0
+NAME                   STATUS     ROLES           AGE     VERSION
+k8s-c3-control-plane   Ready      control-plane   2m22s   v1.29.0
+k8s-c3-worker          NotReady   <none>          2m      v1.29.0
+k8s-c3-worker2         Ready      <none>          2m      v1.29.0
 ```
 
-The node `lab18-worker` is in `NotReady` state.
+The node `k8s-c3-worker` is in `NotReady` state.
 
 ### Validate the kubelet status
 
 #### Connect to the node
 
 ```shell
-docker exec -it lab18-worker bash
-root@lab18-worker:/#
+docker exec -it k8s-c3-worker bash
+root@k8s-c3-worker:/#
 ```
 
 #### Validate the kubelet status with systemctl
 
 ```shell
-root@lab18-worker:/# systemctl status kubelet
+root@k8s-c3-worker:/# systemctl status kubelet
 ● kubelet.service - kubelet: The Kubernetes Node Agent
      Loaded: loaded (/etc/systemd/system/kubelet.service; enabled; vendor preset: enabled)
     Drop-In: /etc/systemd/system/kubelet.service.d
@@ -71,8 +71,8 @@ This is the location of the configuration files:
 #### Validate the 10-kubeadm.conf file
 
 ```shell
-root@lab18-worker:/# cd /etc/systemd/system/kubelet.service.d/
-root@lab18-worker:/etc/systemd/system/kubelet.service.d# cat 10-kubeadm.conf
+root@k8s-c3-worker:/# cd /etc/systemd/system/kubelet.service.d/
+root@k8s-c3-worker:/etc/systemd/system/kubelet.service.d# cat 10-kubeadm.conf
 # https://github.com/kubernetes/kubernetes/blob/ba8fcafaf8c502a454acd86b728c857932555315/build/debs/10-kubeadm.conf
 # Note: This dropin only works with kubeadm and kubelet v1.11+
 [Service]
@@ -92,12 +92,12 @@ Validate if the location of the `/usr/local/bin/kubelet` is correct.
 #### Validate the location of the kubelet command
 
 ```shell
-root@lab18-worker:/etc/systemd/system/kubelet.service.d# ls -l /usr/local/bin/kubelet
+root@k8s-c3-worker:/etc/systemd/system/kubelet.service.d# ls -l /usr/local/bin/kubelet
 ls: cannot access '/usr/local/bin/kubelet': No such file or directory
 ```
 
 ```shell
-root@lab18-worker:/etc/systemd/system/kubelet.service.d# which kubelet
+root@k8s-c3-worker:/etc/systemd/system/kubelet.service.d# which kubelet
 /usr/bin/kubelet
 ```
 
@@ -106,7 +106,7 @@ Seems the configuration in `10-kubeadm.conf` is pointing to the wrong `kubelet` 
 ### Fix the kubelet location
 
 ```shell
-root@lab18-worker:/etc/systemd/system/kubelet.service.d# vim 10-kubeadm.conf 
+root@k8s-c3-worker:/etc/systemd/system/kubelet.service.d# vim 10-kubeadm.conf 
 
 Change /usr/local/bin/kubelet for /usr/bin/kubelet
 ```
@@ -114,28 +114,28 @@ Change /usr/local/bin/kubelet for /usr/bin/kubelet
 #### Start the kubelet service
 
 ```shell
-root@lab18-worker:/etc/systemd/system/kubelet.service.d# systemctl start kubelet
+root@k8s-c3-worker:/etc/systemd/system/kubelet.service.d# systemctl start kubelet
 Warning: The unit file, source configuration file or drop-ins of kubelet.service changed on disk. Run 'systemctl daemon-reload' to reload units.
 ```
 
 Follow the instructions:
 
 ```shell
-root@lab18-worker:/etc/systemd/system/kubelet.service.d# systemctl daemon-reload --->> No output
-root@lab18-worker:/etc/systemd/system/kubelet.service.d# 
+root@k8s-c3-worker:/etc/systemd/system/kubelet.service.d# systemctl daemon-reload --->> No output
+root@k8s-c3-worker:/etc/systemd/system/kubelet.service.d# 
 ```
 
 Start `kubelet` service again:
 
 ```shell
-root@lab18-worker:/etc/systemd/system/kubelet.service.d# systemctl start kubelet --->> No output
-root@lab18-worker:/etc/systemd/system/kubelet.service.d# 
+root@k8s-c3-worker:/etc/systemd/system/kubelet.service.d# systemctl start kubelet --->> No output
+root@k8s-c3-worker:/etc/systemd/system/kubelet.service.d# 
 ```
 
 Validate the `kubelet` service:
 
 ```shell
-root@lab18-worker:/etc/systemd/system/kubelet.service.d# systemctl status kubelet
+root@k8s-c3-worker:/etc/systemd/system/kubelet.service.d# systemctl status kubelet
 ● kubelet.service - kubelet: The Kubernetes Node Agent
      Loaded: loaded (/etc/systemd/system/kubelet.service; enabled; vendor preset: enabled)
     Drop-In: /etc/systemd/system/kubelet.service.d
@@ -172,9 +172,9 @@ The nodes should be on `Ready` state.
 ```shell
 k get nodes
 NAME                  STATUS   ROLES           AGE   VERSION
-lab18-control-plane   Ready    control-plane   25m   v1.29.0
-lab18-worker          Ready    <none>          24m   v1.29.0
-lab18-worker2         Ready    <none>          24m   v1.29.0
+k8s-c3-control-plane   Ready    control-plane   25m   v1.29.0
+k8s-c3-worker          Ready    <none>          24m   v1.29.0
+k8s-c3-worker2         Ready    <none>          24m   v1.29.0
 ```
 
 ### Run a Pod in the node
@@ -185,14 +185,14 @@ k run nginx --image=nginx --dry-run=client -o yaml > 18-pod.yaml
 
 Add `nodeSelector:` to `18-pod.yaml` file at same level of `containers`:
 
-Get the lab18-worker node `Labels`:
+Get the k8s-c3-worker node `Labels`:
 
 ```shell
-k describe node lab18-worker | grep Labels -A5
+k describe node k8s-c3-worker | grep Labels -A5
 Labels:             beta.kubernetes.io/arch=arm64
                     beta.kubernetes.io/os=linux
                     kubernetes.io/arch=arm64
-                    kubernetes.io/hostname=lab18-worker
+                    kubernetes.io/hostname=k8s-c3-worker
                     kubernetes.io/os=linux
 Annotations:        kubeadm.alpha.kubernetes.io/cri-socket: unix:///run/containerd/containerd.sock
 ```
@@ -200,7 +200,7 @@ Annotations:        kubeadm.alpha.kubernetes.io/cri-socket: unix:///run/containe
 ```shell
 spec:
   nodeSelector: 
-    kubernetes.io/hostname: lab18-worker
+    kubernetes.io/hostname: k8s-c3-worker
   containers:
 ```
 
@@ -215,8 +215,8 @@ Validate the location of the pod:
 
 ```shell
 k get pod -o wide
-NAME    READY   STATUS    RESTARTS   AGE   IP           NODE           NOMINATED NODE   READINESS GATES
-nginx   1/1     Running   0          66s   10.244.2.2   lab18-worker   <none>           <none>
+NAME    READY   STATUS    RESTARTS   AGE   IP           NODE            NOMINATED NODE   READINESS GATES
+nginx   1/1     Running   0          66s   10.244.2.2   k8s-c3-worker   <none>           <none>
 ```
 
 Pod was scheduled in the `lab18-worker` node.

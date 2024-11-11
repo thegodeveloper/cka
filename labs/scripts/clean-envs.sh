@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-kind delete cluster --name lab18
+kind delete cluster --name k8s-c3
