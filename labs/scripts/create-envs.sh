@@ -45,3 +45,17 @@ docker exec -it k8s-c3-worker systemctl daemon-reload >/dev/null 2>&1 || true
 # Stop and start the kubelet process
 docker exec -it k8s-c3-worker systemctl stop kubelet >/dev/null 2>&1 || true
 docker exec -it k8s-c3-worker systemctl start kubelet >/dev/null 2>&1 || true
+
+####### Create k8s-c4 cluster #######
+echo 'creating k8s-c4 cluster'
+kind create cluster --name k8s-c4 --config yaml-definitions/cluster.yaml
+
+# Drain the k8s-c4-worker2 node
+kubectl drain k8s-c4-worker2 --ignore-daemonsets --delete-emptydir-data >/dev/null 2>&1 || true
+
+# Delete the node
+kubectl delete node k8s-c4-worker2 >/dev/null 2>&1 || true
+
+# Reset the node
+docker exec -it k8s-c4-worker2 kubeadm reset --force >/dev/null 2>&1 || true
+
