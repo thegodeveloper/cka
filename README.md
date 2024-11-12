@@ -59,7 +59,7 @@
 - [17 - Find Container of Pod and Check Info - 3%](labs/18-fix-kubelet.md)
 - [18 - Fix Kubelet - %8](labs/18-fix-kubelet.md)
 - [19 - Create Secret and Mount into Pod - 3%](labs/19-create-secret-and-mount-into-pod.md)
-- [10 - Update Kubernetes Version and Join Cluster - 10%](labs/20-update-kubernetes-version-and-join-cluster.md)
+- [20 - Update Kubernetes Version and Join Cluster - 10%](labs/20-update-kubernetes-version-and-join-cluster.md)
 
 ## Notes
 

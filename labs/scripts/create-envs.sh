@@ -59,3 +59,11 @@ kubectl delete node k8s-c4-worker2 >/dev/null 2>&1 || true
 # Reset the node
 docker exec -it k8s-c4-worker2 kubeadm reset --force >/dev/null 2>&1 || true
 
+# Install other version
+docker exec -it k8s-c4-worker2 bash -c "apt-get update" || true
+docker exec -it k8s-c4-worker2 bash -c "apt-get install -y apt-transport-https ca-certificates curl gpg" || true
+docker exec -it k8s-c4-worker2 bash -c "mkdir -p -m 755 /etc/apt/keyrings" || true
+docker exec -it k8s-c4-worker2 bash -c "curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg" || true
+docker exec -it k8s-c4-worker2 bash -c "echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' > /etc/apt/sources.list.d/kubernetes.list" || true
+docker exec -it k8s-c4-worker2 bash -c "apt-get update" || true
+docker exec -it k8s-c4-worker2 bash -c "apt-get install -y kubelet=1.29.3-1.1 kubectl=1.29.3-1.1" || true
