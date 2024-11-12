@@ -58,6 +58,7 @@
 - [16 - Namespaces and API Resources - 2%](labs/16-namespaces-and-api-resources.md)
 - [17 - Find Container of Pod and Check Info - 3%](labs/18-fix-kubelet.md)
 - [18 - Fix Kubelet - %8](labs/18-fix-kubelet.md)
+- [19 - Create Secret and Mount into Pod - 3%](labs/19-create-secret-and-mount-into-pod.md)
 
 ## Notes
 
@@ -65,10 +66,11 @@
 
 ## ToDo
 
-- Create a script that prepares the labs environments.
-- Create a script that deletes the labs environments.
-- The labs environments should be on different clusters names.
+- Create a script that prepares the labs environments. [Done].
+- Create a script that deletes the labs environments. [Done].
+- The labs environments should be on different clusters names. [Done].
 - Create a script that validates the solutions of the labs and generates a score.
 - Update the labs questions according to latest Kubernetes version.
-- Group environments in clusters.
-- Organize the directory structure.
+- Group environments in clusters. [Done].
+- Organize the directory structure. [Done].
+- Hide the solutions. [Done].
