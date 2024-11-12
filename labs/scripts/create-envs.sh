@@ -59,6 +59,10 @@ kubectl delete node k8s-c4-worker2 >/dev/null 2>&1 || true
 # Reset the node
 docker exec -it k8s-c4-worker2 kubeadm reset --force >/dev/null 2>&1 || true
 
+## Install vim on k8s-c4-control-plane
+docker exec -it k8s-c4-control-plane bash -c "apt-get update" || true
+docker exec -it k8s-c4-control-plane bash -c "apt-get install vim -y" || true
+
 # Install other version
 docker exec -it k8s-c4-worker2 bash -c "apt-get update" || true
 docker exec -it k8s-c4-worker2 bash -c "apt-get install -y apt-transport-https ca-certificates curl gpg" || true
