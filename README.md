@@ -61,6 +61,7 @@
 - [19 - Create Secret and Mount into Pod - 3%](labs/19-create-secret-and-mount-into-pod.md)
 - [20 - Update Kubernetes Version and Join Cluster - 10%](labs/20-update-kubernetes-version-and-join-cluster.md)
 - [21 - Create a Static Pod and Service - 2%](labs/21-create-a-static-pod-and-service.md)
+- [22 - Check how long certificates are valid - 2%](labs/22-check-how-long-certificates-are-valid.md)
 
 ## Notes
 

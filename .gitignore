@@ -48,3 +48,7 @@ crowded-namespace.txt
 18-pod.yaml
 19-secret1.yaml
 19.yaml
+
+22-expiration.txt
+22-kubeadm-renew-certs.sh
+
