@@ -55,6 +55,16 @@ docker exec -it k8s-c3-worker systemctl daemon-reload >/dev/null 2>&1 || true
 docker exec -it k8s-c3-worker systemctl stop kubelet >/dev/null 2>&1 || true
 docker exec -it k8s-c3-worker systemctl start kubelet >/dev/null 2>&1 || true
 
+# Lab 25 Etcd Backup
+docker exec -it k8s-c3-control-plane bash -c "curl -L https://storage.googleapis.com/etcd/v3.5.17/etcd-v3.5.17-linux-amd64.tar.gz -o /tmp/etcd-v3.5.17-linux-amd64.tar.gz" || true
+docker exec -it k8s-c3-control-plane bash -c "mkdir /tmp/etcd-download-test" || true
+docker exec -it k8s-c3-control-plane bash -c "tar xzvf /tmp/etcd-v3.5.17-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1" || true
+docker exec -it k8s-c3-control-plane bash -c "rm -f /tmp/etcd-v3.5.17-linux-amd64.tar.gz" || true
+docker exec -it k8s-c3-control-plane bash -c "mv /tmp/etcd-download-test/etcdctl /usr/local/bin/etcdctl" || true
+
+docker exec -it k8s-c3-control-plane bash -c "apt-get update" || true
+docker exec -it k8s-c3-control-plane bash -c "apt-get install vim -y" || true
+
 ####### Create k8s-c4 cluster #######
 echo 'creating k8s-c4 cluster'
 kind create cluster --name k8s-c4 --config yaml-definitions/cluster.yaml
