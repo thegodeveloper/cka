@@ -8,7 +8,7 @@ kubectl config use-context kind-k8s-c1
 
 ## Task Definition
 
-- SSH into the master node with `docker exec -it cka-control-plane bash`.
+- SSH into the master node with `docker exec -it k8s-c1-control-plane bash`.
 - Check how the master components `kubelet`, `kube-apiserver`, `kube-scheduler`, `kube-controller-manager` and `etcd` are started/installed on the master node.
 - Find out the name of the DNS application and how it's started/installed on the master node.
 
@@ -31,7 +31,7 @@ Choices of `[TYPE]` are: `not-installed`, `process`, `static-pod`, `pod`.
 <details>
   <summary>Show the solution</summary>
 
-### Connect to cka-control-plane and get kubelet processes
+### Connect to k8s-c1-control-plane and get kubelet processes
 
 ```shell
 docker exec -it k8s-c1-control-plane bash

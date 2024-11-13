@@ -1,6 +1,6 @@
 # Kill Scheduler, Manual Scheduling - 5%
 
-## Use Context kind-cka
+## Use Context
 
 ```shell
 kubectl config use-context kind-k8s-c2
@@ -12,7 +12,7 @@ kubectl config use-context kind-k8s-c2
 - `Temporarily` stop the `kube-scheduler`, in a way that you can start it again afterward.
 - Create a single `Pod` named `manual-schedule` of image `httpd:2.4-alpine`, confirm its created but not scheduled on any node.
 - Manually schedule that `Pod` on node `k8s-c2-control-plane`, make sure it's running.
-- Start the `kube-scheduler` again and confirm its running correctly by creating a second `Pod` named `manual-schedule2` of image `httpd:2.4-alpine` and check if it's running on `cka-control-plane` cluster.
+- Start the `kube-scheduler` again and confirm its running correctly by creating a second `Pod` named `manual-schedule2` of image `httpd:2.4-alpine` and check if it's running on `k8s-c2-control-plane` cluster.
 
 ## Solution
 
@@ -89,7 +89,7 @@ apt-get instal vim -y
 
 ```yaml
 spec:
-  nodeName: cka-control-plane
+  nodeName: k8s-c2-control-plane
 ```
 
 ### Replace the pod

@@ -10,7 +10,7 @@ kubectl config use-context kind-k8s-c2
 
 - Write a command into `cluster-events.sh` which shows the latest events in the whole cluster, ordered by time. Use `kubectl` for it.
 - Now kill the `kube-proxy` Pod running on node `k8s-c2-worker` and write the events into `pod_kill.log`.
-- Finally kill the containerd container of the `kube-proxy` Pod on node `cka-worker` and write the events into `container_kill.log`. 
+- Finally kill the containerd container of the `kube-proxy` Pod on node `k8s-c2-worker` and write the events into `container_kill.log`. 
 
 ## Solution
 
@@ -31,7 +31,7 @@ chmod u+x cluster-events.sh
 ./cluster-events.sh
 ```
 
-### Kill kube-proxy Pod in cka-worker node
+### Kill kube-proxy Pod in k8s-c2-worker node
 
 ```shell
 k -n kube-system get pod -o wide | grep kube-proxy
@@ -61,8 +61,8 @@ kube-system          90s         Normal    Killing                   pod/kube-pr
 kube-system          89s         Normal    Pulled                    pod/kube-proxy-7ln7q                            Container image "registry.k8s.io/kube-proxy:v1.29.0" already present on machine
 kube-system          89s         Normal    Started                   pod/kube-proxy-7ln7q                            Started container kube-proxy
 kube-system          89s         Normal    Created                   pod/kube-proxy-7ln7q                            Created container kube-proxy
-default              89s         Normal    Starting                  node/cka-worker                                 
-kube-system          89s         Normal    Scheduled                 pod/kube-proxy-7ln7q                            Successfully assigned kube-system/kube-proxy-7ln7q to cka-worker
+default              89s         Normal    Starting                  node/k8s-c2-worker                                 
+kube-system          89s         Normal    Scheduled                 pod/kube-proxy-7ln7q                            Successfully assigned kube-system/kube-proxy-7ln7q to k8s-c2-worker
 kube-system          89s         Normal    SuccessfulCreate          daemonset/kube-proxy                            Created pod: kube-proxy-7ln7q
 ```
 
@@ -99,6 +99,6 @@ add the information
 cat container_kill.log
 kube-system          81s         Normal    Pulled                    pod/kube-proxy-7ln7q                            Container image "registry.k8s.io/kube-proxy:v1.29.0" already present on machine
 kube-system          80s         Normal    Started                   pod/kube-proxy-7ln7q                            Started container kube-proxy
-default              80s         Normal    Starting                  node/cka-worker
+default              80s         Normal    Starting                  node/k8s-c2-worker
 ```
 </details>

@@ -8,7 +8,7 @@ kubectl config use-context kind-k8s-c1
 
 ## Task Definition
 
-- Create Namespace called `cka-master`.
+- Create Namespace called `k8s-c1-master`.
 - Write the names of all namespaced Kubernetes resources (like Pod, Secret, ConfigMap...) into `namespaced_resources.txt`.
 - Find the `project-*` Namespace with the highest number of `Roles` defined in it and write its name and amount of `Roles` into `crowded-namespace.txt`.
 
@@ -20,8 +20,8 @@ kubectl config use-context kind-k8s-c1
 ### Create Namespace
 
 ```shell
-k create ns cka-master
-namespace/cka-master created
+k create ns k8s-c1-master
+namespace/k8s-c1-master created
 ```
 
 ### Write all namespaces Kubernetes resources

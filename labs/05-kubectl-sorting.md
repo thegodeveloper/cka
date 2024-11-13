@@ -33,18 +33,18 @@ chmod u+x find_pods.sh
 
 ```shell
 ./find_pods.sh
-NAMESPACE            NAME                                        READY   STATUS    RESTARTS   AGE
-kube-system          etcd-cka-control-plane                      1/1     Running   0          38m
-kube-system          kube-scheduler-cka-control-plane            1/1     Running   0          38m
-kube-system          kube-apiserver-cka-control-plane            1/1     Running   0          38m
-kube-system          kube-controller-manager-cka-control-plane   1/1     Running   0          38m
-kube-system          kindnet-x7xwx                               1/1     Running   0          38m
-kube-system          kube-proxy-5v2b7                            1/1     Running   0          38m
-kube-system          coredns-76f75df574-crf8j                    1/1     Running   0          38m
-kube-system          coredns-76f75df574-pfc4l                    1/1     Running   0          38m
-local-path-storage   local-path-provisioner-6f8956fb48-6ht9m     1/1     Running   0          38m
-default              ready-if-service-ready                      1/1     Running   0          31m
-default              am-i-ready                                  1/1     Running   0          23m
+NAMESPACE            NAME                                           READY   STATUS    RESTARTS   AGE
+kube-system          etcd-k8s-c1-control-plane                      1/1     Running   0          38m
+kube-system          kube-scheduler-k8s-c1-control-plane            1/1     Running   0          38m
+kube-system          kube-apiserver-k8s-c1-control-plane            1/1     Running   0          38m
+kube-system          kube-controller-manager-k8s-c1-control-plane   1/1     Running   0          38m
+kube-system          kindnet-x7xwx                                  1/1     Running   0          38m
+kube-system          kube-proxy-5v2b7                               1/1     Running   0          38m
+kube-system          coredns-76f75df574-crf8j                       1/1     Running   0          38m
+kube-system          coredns-76f75df574-pfc4l                       1/1     Running   0          38m
+local-path-storage   local-path-provisioner-6f8956fb48-6ht9m        1/1     Running   0          38m
+default              ready-if-service-ready                         1/1     Running   0          31m
+default              am-i-ready                                     1/1     Running   0          23m
 ```
 
 ### Create the second command
@@ -58,17 +58,17 @@ chmod u+x find_pods_uid.sh
 
 ```shell
 ./find_pods_uid.sh
-NAMESPACE            NAME                                        READY   STATUS    RESTARTS   AGE
-kube-system          kube-controller-manager-cka-control-plane   1/1     Running   0          44m
-kube-system          kindnet-x7xwx                               1/1     Running   0          43m
-kube-system          kube-proxy-5v2b7                            1/1     Running   0          43m
-kube-system          kube-scheduler-cka-control-plane            1/1     Running   0          44m
-default              am-i-ready                                  1/1     Running   0          28m
-kube-system          etcd-cka-control-plane                      1/1     Running   0          44m
-kube-system          coredns-76f75df574-crf8j                    1/1     Running   0          43m
-default              ready-if-service-ready                      1/1     Running   0          36m
-kube-system          coredns-76f75df574-pfc4l                    1/1     Running   0          43m
-local-path-storage   local-path-provisioner-6f8956fb48-6ht9m     1/1     Running   0          43m
-kube-system          kube-apiserver-cka-control-plane            1/1     Running   0          44m
+NAMESPACE            NAME                                           READY   STATUS    RESTARTS   AGE
+kube-system          kube-controller-manager-k8s-c1-control-plane   1/1     Running   0          44m
+kube-system          kindnet-x7xwx                                  1/1     Running   0          43m
+kube-system          kube-proxy-5v2b7                               1/1     Running   0          43m
+kube-system          kube-scheduler-k8s-c1-control-plane            1/1     Running   0          44m
+default              am-i-ready                                     1/1     Running   0          28m
+kube-system          etcd-k8s-c1-control-plane                      1/1     Running   0          44m
+kube-system          coredns-76f75df574-crf8j                       1/1     Running   0          43m
+default              ready-if-service-ready                         1/1     Running   0          36m
+kube-system          coredns-76f75df574-pfc4l                       1/1     Running   0          43m
+local-path-storage   local-path-provisioner-6f8956fb48-6ht9m        1/1     Running   0          43m
+kube-system          kube-apiserver-k8s-c1-control-plane            1/1     Running   0          44m
 ```
 </details>

@@ -8,9 +8,9 @@ kubectl config use-context kind-k8s-c3
 
 ## Task Definition
 
-- Seems that `kubelet` service is not running in the `cka-worker` node.
+- Seems that `kubelet` service is not running in the `k8s-c3-worker` node.
 - Fix it and confirm that cluster has node `k8s-c3-worker` available in Ready state afterwards.
-- You should be able to schedule a `Pod` on cluster `cka-worker afterwards.
+- You should be able to schedule a `Pod` on cluster `k8s-c3-worker afterwards.
 - Write the reason of the issue into `18-reason.txt`.
 
 ## Solution

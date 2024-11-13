@@ -13,7 +13,7 @@ Find out following information about the cluster `kind-cka`:
 2. How many worker nodes are available?
 3. What is the Service CIDR?
 4. Which Networking (or CNI Plugin) is configured and where is it config file?
-5. Which suffix will static pods have that run on `cka-worker`?
+5. Which suffix will static pods have that run on `k8s-c1-worker`?
 
 Write your answers into file `cluster-info.txt`, structured like this:
 
@@ -63,7 +63,7 @@ root@k8s-c1-control-plane:/# cat /etc/cni/net.d/10-kindnet.conflist | grep cniVe
 
 By default, the kubelet looks into `/etc/cni/net.d/` to discover the CNI plugins. This will be the same on every master and worker nodes.
 
-### Which suffix static pods have that run on cka-worker?
+### Which suffix static pods have that run on k8s-c1-worker?
 
 `-k8s-c1-worker`
 

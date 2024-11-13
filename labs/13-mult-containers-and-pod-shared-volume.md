@@ -98,7 +98,7 @@ Check if container `c1` has the requested node name as env variable:
 
 ```shell
 k exec multi-container-playground -c c1 -- env | grep MY
-MY_NODE_NAME=cka-worker2
+MY_NODE_NAME=k8s-c1-worker2
 ```
 
 ### Check the container c3
