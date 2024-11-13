@@ -17,21 +17,6 @@ kubectl config use-context kind-k8s-c1
 <details>
   <summary>Show the solution</summary>
 
-### Validate the Pods
-
-```shell
-k get pods -n project-c13
-NAME     READY   STATUS    RESTARTS   AGE
-o3db-0   1/1     Running   0          11s
-o3db-1   1/1     Running   0          6s
-```
-
-### Lab Scale Down Statefulset
-
-- There are two Pods named `o3db-*` in the Namespace `project-c13`.
-- Management asked you to scale the Pods down to one replica to save resources.
-- Record the action.
-
 #### Check the Pods
 
 ```shell
