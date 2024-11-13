@@ -24,6 +24,15 @@ helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metric
 # Lab 11, 12, 17
 kubectl create namespace project-tiger
 
+# Lab 24
+kubectl create ns project-snake
+kubectl -n project-snake run backend-0 --image=alpine/curl --labels app=backend --command -- /bin/sh -c "while true; do sleep 3600; done"
+kubectl -n project-snake run db1-0 --image=hashicorp/http-echo --labels app=db1 --port=1111 -- --text="database one" --listen=:1111
+kubectl -n project-snake run db2-0 --image=hashicorp/http-echo --labels app=db2 --port=2222 -- --text="database two" --listen=:2222
+kubectl -n project-snake run vault-0 --image=hashicorp/http-echo --labels app=vault --port=3333 -- --text="vault secret storage" --listen=:3333
+
+kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml
+
 ####### Create k8s-c2 #######
 echo 'creating k8s-c2 cluster'
 kind create cluster --name k8s-c2 --config yaml-definitions/cluster.yaml
