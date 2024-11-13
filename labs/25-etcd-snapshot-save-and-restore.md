@@ -3,7 +3,7 @@
 ## Use context
 
 ```shell
-kubectl config use-context kind-ks8-c3
+kubectl config use-context kind-k8s-c3
 ```
 
 ## Task Definition
