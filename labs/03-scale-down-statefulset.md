@@ -63,23 +63,4 @@ k get pods -n project-c13 | grep o3db
 o3db-0   1/1     Running   0          8m20s
 ```
 
-## Clean the Infrastructure
-
-### Delete the statefulset
-
-```shell
-k delete sts o3db -n project-c13
-```
-
-### Delete the Namespace
-
-```shell
-k delete ns project-c13
-```
-
-### Delete the Cluster
-
-```shell
-kind delete cluster --name cka
-```
 </details>
