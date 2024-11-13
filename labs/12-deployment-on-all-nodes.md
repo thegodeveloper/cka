@@ -93,10 +93,10 @@ deployment.apps/deploy-important created
 
 ```shell
 k -n project-tiger get pod -o wide
-NAME                                READY   STATUS    RESTARTS   AGE   IP           NODE          NOMINATED NODE   READINESS GATES
-deploy-important-5f8df96666-4sf8v   2/2     Running   0          8s    10.244.2.5   cka-worker    <none>           <none>
-deploy-important-5f8df96666-dswxg   2/2     Running   0          8s    10.244.1.4   cka-worker2   <none>           <none>
-deploy-important-5f8df96666-swcvn   0/2     Pending   0          8s    <none>       <none>        <none>           <none>
+NAME                                READY   STATUS    RESTARTS   AGE   IP           NODE             NOMINATED NODE   READINESS GATES
+deploy-important-5f8df96666-4sf8v   2/2     Running   0          8s    10.244.2.5   k8s-c1-worker    <none>           <none>
+deploy-important-5f8df96666-dswxg   2/2     Running   0          8s    10.244.1.4   k8s-c1-worker2   <none>           <none>
+deploy-important-5f8df96666-swcvn   0/2     Pending   0          8s    <none>       <none>           <none>           <none>
 ```
 
 ## Clean the Environment
