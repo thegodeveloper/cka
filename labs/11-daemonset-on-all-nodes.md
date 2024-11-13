@@ -75,13 +75,13 @@ ds-important   3         3         3       3            3           <none>      
 
 ### List the DaemonSet Pods
 
-Validate that is also running in `cka-control-plane` node.
+Validate that is also running in `k8s-c1-control-plane` node.
 
 ```shell
 k -n project-tiger get pod -o wide
-NAME                 READY   STATUS    RESTARTS   AGE     IP           NODE                NOMINATED NODE   READINESS GATES
-ds-important-6rf7v   1/1     Running   0          3m18s   10.244.0.5   cka-control-plane   <none>           <none>
-ds-important-sb7xr   1/1     Running   0          3m18s   10.244.2.2   cka-worker          <none>           <none>
-ds-important-sjr47   1/1     Running   0          3m18s   10.244.1.2   cka-worker2         <none>           <none>
+NAME                 READY   STATUS    RESTARTS   AGE     IP           NODE                   NOMINATED NODE   READINESS GATES
+ds-important-6rf7v   1/1     Running   0          3m18s   10.244.0.5   k8s-c1-control-plane   <none>           <none>
+ds-important-sb7xr   1/1     Running   0          3m18s   10.244.2.2   k8s-c1-worker          <none>           <none>
+ds-important-sjr47   1/1     Running   0          3m18s   10.244.1.2   k8s-c1-worker2         <none>           <none>
 ```
 </details>
