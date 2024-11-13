@@ -27,13 +27,6 @@ kubectl config use-context kind-k8s-c1
 <details>
   <summary>Show the solution</summary>
 
-### Create the Namespace
-
-```shell
-k create ns project-tiger
-namespace/project-tiger created
-```
-
 ### Create the PersistentVolume
 
 #### Get PersistentVolume Definition from Kubernetes Documentation

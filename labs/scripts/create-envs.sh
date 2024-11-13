@@ -21,7 +21,7 @@ helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/ >
 helm repo update >/dev/null 2>&1 || true
 helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metrics-server/metrics-server --namespace kube-system
 
-# Lab 11, 12, 17
+# Lab 06, 11, 12, 17
 kubectl create namespace project-tiger
 
 # Lab 24
