@@ -1,5 +1,12 @@
 # Certified Kubernetes Administrator
 
+## Requirements
+
+- Linux.
+- Docker Desktop. (With Docker Engine is enough).
+- Kind k8s. [here](https://kind.sigs.k8s.io/),
+- Terminal, kubectl, vim.
+
 ## Content
 
 - [00 - Create Cluster](00-create-cluster.md)
