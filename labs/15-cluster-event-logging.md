@@ -9,7 +9,7 @@ kubectl config use-context kind-k8s-c2
 ## Task Definition
 
 - Write a command into `cluster-events.sh` which shows the latest events in the whole cluster, ordered by time. Use `kubectl` for it.
-- Now kill the `kube-proxy` Pod running on node `cka-worker` and write the events into `pod_kill.log`.
+- Now kill the `kube-proxy` Pod running on node `k8s-c2-worker` and write the events into `pod_kill.log`.
 - Finally kill the containerd container of the `kube-proxy` Pod on node `cka-worker` and write the events into `container_kill.log`. 
 
 ## Solution
@@ -35,9 +35,9 @@ chmod u+x cluster-events.sh
 
 ```shell
 k -n kube-system get pod -o wide | grep kube-proxy
-kube-proxy-b2wb5                            1/1     Running   0          21m   172.18.0.3   cka-worker2         <none>           <none>
-kube-proxy-jf4d2                            1/1     Running   0          21m   172.18.0.4   cka-control-plane   <none>           <none>
-kube-proxy-x6r2j                            1/1     Running   0          21m   172.18.0.2   cka-worker          <none>           <none>
+kube-proxy-b2wb5                            1/1     Running   0          21m   172.18.0.3   k8s-c2-worker2         <none>           <none>
+kube-proxy-jf4d2                            1/1     Running   0          21m   172.18.0.4   k8s-c2-control-plane   <none>           <none>
+kube-proxy-x6r2j                            1/1     Running   0          21m   172.18.0.2   k8s-c2-worker          <none>           <none>
 ```
 
 ```shell
@@ -66,27 +66,27 @@ kube-system          89s         Normal    Scheduled                 pod/kube-pr
 kube-system          89s         Normal    SuccessfulCreate          daemonset/kube-proxy                            Created pod: kube-proxy-7ln7q
 ```
 
-### kill the containerd container of the kube-proxy Pod on node cka-worker
+### kill the containerd container of the kube-proxy Pod on node k8s-c2-worker
 
 ```shell
 k -n kube-system get pod -o wide | grep kube-proxy
-kube-proxy-7ln7q                            1/1     Running   0          6m2s   172.18.0.2   cka-worker          <none>           <none>
-kube-proxy-b2wb5                            1/1     Running   0          27m    172.18.0.3   cka-worker2         <none>           <none>
-kube-proxy-jf4d2                            1/1     Running   0          27m    172.18.0.4   cka-control-plane   <none>           <none>
+kube-proxy-7ln7q                            1/1     Running   0          6m2s   172.18.0.2   k8s-c2-worker          <none>           <none>
+kube-proxy-b2wb5                            1/1     Running   0          27m    172.18.0.3   k8s-c2-worker2         <none>           <none>
+kube-proxy-jf4d2                            1/1     Running   0          27m    172.18.0.4   k8s-c2-control-plane   <none>           <none>
 ```
 
 ```shell
-docker exec -it cka-worker bash
-root@cka-worker:/# crictl ps
+docker exec -it k8s-c2-worker bash
+root@k8s-c2-worker:/# crictl ps
 CONTAINER           IMAGE               CREATED             STATE               NAME                ATTEMPT             POD ID              POD
 87fb11a3ffd82       0c3491790de4f       9 minutes ago       Running             kube-proxy          0                   91007ee90200c       kube-proxy-7ln7q
 6dff5769b90fb       b18bf71b941ba       30 minutes ago      Running             kindnet-cni         0                   049849de5bba7       kindnet-bhnzc
 ```
 
 ```shell
-root@cka-worker:/# crictl stop 87fb11a3ffd82
+root@k8s-c2-worker:/# crictl stop 87fb11a3ffd82
 87fb11a3ffd82
-root@cka-worker:/# crictl rm 87fb11a3ffd82
+root@k8s-c2-worker:/# crictl rm 87fb11a3ffd82
 87fb11a3ffd82
 ```
 
