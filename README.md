@@ -62,6 +62,7 @@
 - [20 - Update Kubernetes Version and Join Cluster - 10%](labs/20-update-kubernetes-version-and-join-cluster.md)
 - [21 - Create a Static Pod and Service - 2%](labs/21-create-a-static-pod-and-service.md)
 - [22 - Check how long certificates are valid - 2%](labs/22-check-how-long-certificates-are-valid.md)
+- [23 - Kubelet client/server cert info - 2%](labs/23-kubelet-client-server-cert-info.md)
 
 ## Notes
 
