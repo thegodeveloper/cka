@@ -53,7 +53,7 @@ CreationTimestamp:  Tue, 24 Sep 2024 21:53:38 -0500
 ```
 
 ```shell
-k get node cka-control-plane --show-labels
+k get node k8s-c1-control-plane --show-labels
 NAME                   STATUS   ROLES           AGE     VERSION   LABELS
 k8s-c1-control-plane   Ready    control-plane   4m17s   v1.29.0   beta.kubernetes.io/arch=arm64,beta.kubernetes.io/os=linux,kubernetes.io/arch=arm64,kubernetes.io/hostname=k8s-c1-control-plane,kubernetes.io/os=linux,node-role.kubernetes.io/control-plane=,node.kubernetes.io/exclude-from-external-load-balancers=
 ```
