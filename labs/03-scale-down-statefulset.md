@@ -1,5 +1,11 @@
 # Scale Down Statefulset - 1%
 
+## Use Context
+
+```shell
+kubectl config use-context kind-k8s-c1
+```
+
 ## Task Definition
 
 - There are two Pods named `o3db-*` in Namespace `project-c13`.
