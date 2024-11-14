@@ -79,11 +79,6 @@
 
 ## ToDo
 
-- Create a script that prepares the labs environments. [Done].
-- Create a script that deletes the labs environments. [Done].
-- The labs environments should be on different clusters names. [Done].
-- Create a script that validates the solutions of the labs and generates a score.
-- Update the labs questions according to latest Kubernetes version.
-- Group environments in clusters. [Done].
-- Organize the directory structure. [Done].
-- Hide the solutions. [Done].
+- Migrate the labs to version `1.31`.
+- Add Helm questions.
+- Link questions with documentation.
