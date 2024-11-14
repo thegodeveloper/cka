@@ -1,4 +1,4 @@
-# Update Kubernetes Version and Join Cluster
+# Question 20 - Update Kubernetes Version and Join Cluster - 10%
 
 ## Use context
 

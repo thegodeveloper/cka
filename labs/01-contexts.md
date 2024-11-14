@@ -1,4 +1,4 @@
-# Contexts - 1%
+# Question 1 - Contexts - 1%
 
 - Write all the contexts names into `contexts.txt` file
 - Write a command to display the current context into `context_default_kubectl.sh` using kubectl
