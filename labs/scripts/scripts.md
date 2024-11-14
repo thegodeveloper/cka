@@ -9,7 +9,7 @@
 
 ## How to study
 
-My strategy during the exam is to answer the questions with highest score first and go down.
+My strategy during the exam is to answer the highest scoring questions first and work my way down.
 
 ### Group 1
 
