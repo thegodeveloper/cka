@@ -82,3 +82,9 @@
 - Migrate the labs to version `1.31`.
 - Add Helm questions.
 - Link questions with documentation.
+
+
+## References
+
+- [Certified Kubernetes Administrator (CKA)](https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/)
+- [Curriculum Overview](https://github.com/cncf/curriculum)
