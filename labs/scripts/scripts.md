@@ -46,5 +46,5 @@ My strategy during the exam is to answer the highest scoring questions first and
 - Question 21 - 2%
 - Question 22 - 2%
 - Question 23 - 2%
-
+- Total: 12%
 
