@@ -10,7 +10,7 @@ kubectl config use-context kind-k8s-c1
 
 - Use the Namespace called `project-tiger`.
 - Create a Deployment named `deploy-important` with label `id=very-important` (the Pods should also have this label) and 3 replicas.
-- It should contain two containers, the first named container1 with image `nginx:1.7.6-alpine` and the second one named container2 with image `busybox` with a sleep command.
+- It should contain two containers, the first named `container1` with image `nginx:1.27.2-alpine` and the second one named `container2` with image `busybox` with a sleep command.
 - There should be only ever one Pod of that Deployment running on `one` worker node.
 - We have two worker nodes: `k8s-c1-worker` and `k8s-c1-worker2`.
 - Because the Deployment has tree replicas the result should be that on both nodes one Pod is running. The third Pod won't be scheduled, unless a new worker node will be added.

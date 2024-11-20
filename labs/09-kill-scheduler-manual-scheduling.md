@@ -78,13 +78,6 @@ root@k8s-c2-control-plane:/etc/kubernetes/manifests#
 kubectl get pod manual-schedule -o yaml > 9.yaml
 ```
 
-### Install VIM
-
-```shell
-apt-get update
-apt-get instal vim -y
-```
-
 ### Edit the file
 
 ```yaml

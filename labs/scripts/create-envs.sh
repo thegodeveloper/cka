@@ -21,6 +21,9 @@ helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/ >
 helm repo update >/dev/null 2>&1 || true
 helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metrics-server/metrics-server --namespace kube-system
 
+# Lab 10
+kubectl create namespace project-hamster
+
 # Lab 06, 11, 12, 17
 kubectl create namespace project-tiger
 
@@ -36,6 +39,11 @@ kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/
 ####### Create k8s-c2 #######
 echo 'creating k8s-c2 cluster'
 kind create cluster --name k8s-c2 --config yaml-definitions/cluster.yaml
+
+
+# Install vim
+docker exec -it k8s-c2-control-plane apt update
+docker exec -it k8s-c2-control-plane apt install vim -y
 
 ####### Create k8s-c3 cluster #######
 echo 'creating k8s-c3 cluster'

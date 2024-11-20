@@ -64,7 +64,7 @@
 - [15 - Cluster Event Logging - 3%](labs/15-cluster-event-logging.md)
 - [16 - Namespaces and API Resources - 2%](labs/16-namespaces-and-api-resources.md)
 - [17 - Find Container of Pod and Check Info - 3%](labs/18-fix-kubelet.md)
-- [18 - Fix Kubelet - %8](labs/18-fix-kubelet.md)
+- [18 - Fix Kubelet - 8%](labs/18-fix-kubelet.md)
 - [19 - Create Secret and Mount into Pod - 3%](labs/19-create-secret-and-mount-into-pod.md)
 - [20 - Update Kubernetes Version and Join Cluster - 10%](labs/20-update-kubernetes-version-and-join-cluster.md)
 - [21 - Create a Static Pod and Service - 2%](labs/21-create-a-static-pod-and-service.md)
