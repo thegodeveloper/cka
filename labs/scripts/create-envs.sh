@@ -42,16 +42,16 @@ kind create cluster --name k8s-c2 --config yaml-definitions/cluster.yaml
 
 
 # Install vim
-docker exec -it k8s-c2-control-plane apt update
-docker exec -it k8s-c2-control-plane apt install vim -y
+docker exec -it k8s-c2-control-plane apt update >/dev/null 2>&1 || true
+docker exec -it k8s-c2-control-plane apt install vim -y >/dev/null 2>&1 || true
 
 ####### Create k8s-c3 cluster #######
 echo 'creating k8s-c3 cluster'
 kind create cluster --name k8s-c3 --config yaml-definitions/cluster.yaml
 
 # Install vim
-docker exec -it k8s-c3-worker apt update
-docker exec -it k8s-c3-worker apt install vim -y
+docker exec -it k8s-c3-worker apt update >/dev/null 2>&1 || true
+docker exec -it k8s-c3-worker apt install vim -y >/dev/null 2>&1 || true
 
 # Modify the 10-kubeadm.conf file to introduce a bug in the container
 docker exec -it k8s-c3-worker sed -i 's|/usr/bin/kubelet|/usr/local/bin/kubelet|' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf >/dev/null 2>&1 || true
