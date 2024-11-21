@@ -7,14 +7,14 @@ echo 'creating k8s-c1 cluster'
 kind create cluster --name k8s-c1 --config yaml-definitions/cluster.yaml
 
 # Use context
-kubectl config use-context kind-k8s-c1
+kubectl config use-context kind-k8s-c1 >/dev/null 2>&1 || true
 
 # Lab 03
-kubectl create namespace project-c13
-kubectl apply -f yaml-definitions/statefulset-o3db.yaml
+kubectl create namespace project-c13 >/dev/null 2>&1 || true
+kubectl apply -f yaml-definitions/statefulset-o3db.yaml >/dev/null 2>&1 || true
 
 # Lab 04
-kubectl apply -f yaml-definitions/lab4-service-am-i-ready.yaml
+kubectl apply -f yaml-definitions/lab4-service-am-i-ready.yaml >/dev/null 2>&1 || true
 
 # Lab 07
 helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/ >/dev/null 2>&1 || true
@@ -22,19 +22,19 @@ helm repo update >/dev/null 2>&1 || true
 helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metrics-server/metrics-server --namespace kube-system >/dev/null 2>&1 || true
 
 # Lab 10
-kubectl create namespace project-hamster
+kubectl create namespace project-hamster >/dev/null 2>&1 || true
 
 # Lab 06, 11, 12, 17
-kubectl create namespace project-tiger
+kubectl create namespace project-tiger >/dev/null 2>&1 || true
 
 # Lab 24
-kubectl create ns project-snake
-kubectl -n project-snake run backend-0 --image=alpine/curl --labels app=backend --command -- /bin/sh -c "while true; do sleep 3600; done"
-kubectl -n project-snake run db1-0 --image=hashicorp/http-echo --labels app=db1 --port=1111 -- --text="database one" --listen=:1111
-kubectl -n project-snake run db2-0 --image=hashicorp/http-echo --labels app=db2 --port=2222 -- --text="database two" --listen=:2222
-kubectl -n project-snake run vault-0 --image=hashicorp/http-echo --labels app=vault --port=3333 -- --text="vault secret storage" --listen=:3333
+kubectl create ns project-snake >/dev/null 2>&1 || true
+kubectl -n project-snake run backend-0 --image=alpine/curl --labels app=backend --command -- /bin/sh -c "while true; do sleep 3600; done" >/dev/null 2>&1 || true
+kubectl -n project-snake run db1-0 --image=hashicorp/http-echo --labels app=db1 --port=1111 -- --text="database one" --listen=:1111 >/dev/null 2>&1 || true
+kubectl -n project-snake run db2-0 --image=hashicorp/http-echo --labels app=db2 --port=2222 -- --text="database two" --listen=:2222 >/dev/null 2>&1 || true
+kubectl -n project-snake run vault-0 --image=hashicorp/http-echo --labels app=vault --port=3333 -- --text="vault secret storage" --listen=:3333 >/dev/null 2>&1 || true
 
-kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml
+kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml >/dev/null 2>&1 || true
 
 ####### Create k8s-c2 #######
 echo 'creating k8s-c2 cluster'
