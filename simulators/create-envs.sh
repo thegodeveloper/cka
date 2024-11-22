@@ -126,4 +126,20 @@ docker exec -it k8s-c4-worker2 bash -c "apt-get install -y kubelet=1.29.3-1.1 ku
 # Question 26
 kubectl apply -f yaml-definitions/26.yaml >/dev/null 2>&1 || true
 
+# Question 28
+kubectl apply -f yaml-definitions/28.yaml >/dev/null 2>&1 || true
+
 echo '🚀 The Kubernetes cluster "k8s-c4" has been successfully prepared!\n'
+
+####### Create k8s-c5 cluster #######
+echo '--------------------------'
+echo '👉 creating k8s-c5 cluster'
+echo '--------------------------\n'
+
+kind create cluster --name k8s-c5 --config yaml-definitions/cluster-one-worker.yaml
+
+echo '\n🚜 Initializing the Kubernetes cluster: k8s-c5...'
+
+kubectl taint nodes k8s-c5-worker node-role.kubernetes.io/node=:NoSchedule >/dev/null 2>&1 || true
+
+echo '🚀 The Kubernetes cluster "k8s-c5" has been successfully prepared!\n'

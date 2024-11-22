@@ -1,4 +1,4 @@
-# HPA Auto Scaling - 6%
+# Question 26 - HPA Auto Scaling - 6%
 
 ## Use context
 

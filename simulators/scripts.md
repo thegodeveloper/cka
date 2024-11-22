@@ -25,6 +25,7 @@ My strategy during the exam is to answer the highest scoring questions first and
 - Question 10 - 6%
 - Question 12 - 6%
 - Question 26 - 6%
+- Question 29 - 6%
 - Question 9 - 5%
 - Question 4 - 4%
 - Question 11 - 4%
@@ -38,7 +39,8 @@ My strategy during the exam is to answer the highest scoring questions first and
 - Question 15 - 3%
 - Question 17 - 3%
 - Question 19 - 3%
-- Total: 12%
+- Question 28 - 3%
+- Total: 15%
 
 ### Group 4
 

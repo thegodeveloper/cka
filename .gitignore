@@ -54,11 +54,11 @@ crowded-namespace.txt
 18-pod.yaml
 19-secret1.yaml
 19.yaml
-
+21.yaml
 22-expiration.txt
 22-kubeadm-renew-certs.sh
 
 23-certificate-info.txt
 24-np.yaml
 24np.yaml
-
+29.yaml
