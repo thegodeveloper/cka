@@ -55,8 +55,8 @@ kind create cluster --name k8s-c2 --config yaml-definitions/cluster.yaml
 echo '\nPreparing k8s-c2 cluster... 🚜'
 
 # Install vim
-docker exec -it k8s-c2-control-plane bash -c "apt update -qq" 
-docker exec -it k8s-c2-control-plane bash -c "apt install vim -y -qq" 
+docker exec -it k8s-c2-control-plane bash -c "apt update -qq > /dev/null 2>&1" 
+docker exec -it k8s-c2-control-plane bash -c "apt install vim -y -qq > /dev/null 2>&1" 
 
 echo 'k8s-c2 cluster completed! 🚀\n'
 
@@ -70,8 +70,8 @@ kind create cluster --name k8s-c3 --config yaml-definitions/cluster.yaml
 echo '\nPreparing k8s-c3 cluster... 🚜'
 
 # Install vim
-docker exec -it k8s-c3-worker bash -c "apt update -qq" 
-docker exec -it k8s-c3-worker bash -c "apt install vim -y -qq" 
+docker exec -it k8s-c3-worker bash -c "apt update -qq > /dev/null 2>&1" 
+docker exec -it k8s-c3-worker bash -c "apt install vim -y -qq > /dev/null 2>&1" 
 
 # Modify the 10-kubeadm.conf file to introduce a bug in the container
 docker exec -it k8s-c3-worker bash -c "sed -i 's|/usr/bin/kubelet|/usr/local/bin/kubelet|' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf" 
@@ -84,14 +84,14 @@ docker exec -it k8s-c3-worker bash -c "systemctl stop kubelet"
 docker exec -it k8s-c3-worker bash -c "systemctl start kubelet" 
 
 # Lab 25 Etcd Backup
-docker exec -it k8s-c3-control-plane bash -c "curl -L https://storage.googleapis.com/etcd/v3.5.17/etcd-v3.5.17-linux-amd64.tar.gz -o /tmp/etcd-v3.5.17-linux-amd64.tar.gz" 
+docker exec -it k8s-c3-control-plane bash -c "curl -L https://storage.googleapis.com/etcd/v3.5.17/etcd-v3.5.17-linux-amd64.tar.gz -o /tmp/etcd-v3.5.17-linux-amd64.tar.gz >/dev/null 2>&1" 
 docker exec -it k8s-c3-control-plane bash -c "mkdir /tmp/etcd-download-test" 
-docker exec -it k8s-c3-control-plane bash -c "tar xzvf /tmp/etcd-v3.5.17-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1" 
+docker exec -it k8s-c3-control-plane bash -c "tar xzvf /tmp/etcd-v3.5.17-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1 >/dev/null 2>&1" 
 docker exec -it k8s-c3-control-plane bash -c "rm -f /tmp/etcd-v3.5.17-linux-amd64.tar.gz" 
 docker exec -it k8s-c3-control-plane bash -c "mv /tmp/etcd-download-test/etcdctl /usr/local/bin/etcdctl" 
 
-docker exec -it k8s-c3-control-plane bash -c "apt-get update -qq" 
-docker exec -it k8s-c3-control-plane bash -c "apt-get install vim -y -qq" 
+docker exec -it k8s-c3-control-plane bash -c "apt-get update -qq > /dev/null 2>&1" 
+docker exec -it k8s-c3-control-plane bash -c "apt-get install vim -y -qq > /dev/null 2>&1" 
 
 echo 'k8s-c3 cluster completed! 🚀\n'
 
@@ -111,19 +111,19 @@ kubectl drain k8s-c4-worker2 --ignore-daemonsets --delete-emptydir-data >/dev/nu
 kubectl delete node k8s-c4-worker2 >/dev/null 2>&1 || true
 
 # Reset the node
-docker exec -it k8s-c4-worker2 bash -c "kubeadm reset --force" 
+docker exec -it k8s-c4-worker2 bash -c "kubeadm reset --force >/dev/null 2>&1" 
 
 ## Install vim on k8s-c4-control-plane
-docker exec -it k8s-c4-control-plane bash -c "apt-get update -qq" 
-docker exec -it k8s-c4-control-plane bash -c "apt-get install vim -y -qq" 
+docker exec -it k8s-c4-control-plane bash -c "apt-get update -qq > /dev/null 2>&1" 
+docker exec -it k8s-c4-control-plane bash -c "apt-get install vim -y -qq > /dev/null 2>&1" 
 
 # Install other version
-docker exec -it k8s-c4-worker2 bash -c "apt-get update -qq" 
-docker exec -it k8s-c4-worker2 bash -c "apt-get install -y apt-transport-https ca-certificates curl gpg -qq" 
+docker exec -it k8s-c4-worker2 bash -c "apt-get update -qq > /dev/null 2>&1" 
+docker exec -it k8s-c4-worker2 bash -c "apt-get install -y apt-transport-https ca-certificates curl gpg -qq > /dev/null 2>&1" 
 docker exec -it k8s-c4-worker2 bash -c "mkdir -p -m 755 /etc/apt/keyrings" 
-docker exec -it k8s-c4-worker2 bash -c "curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg" 
+docker exec -it k8s-c4-worker2 bash -c "curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg >/dev/null 2>&1" 
 docker exec -it k8s-c4-worker2 bash -c "echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' > /etc/apt/sources.list.d/kubernetes.list" 
-docker exec -it k8s-c4-worker2 bash -c "apt-get update -qq" 
-docker exec -it k8s-c4-worker2 bash -c "apt-get install -y kubelet=1.29.3-1.1 kubectl=1.29.3-1.1 -qq" 
+docker exec -it k8s-c4-worker2 bash -c "apt-get update -qq > /dev/null 2>&1" 
+docker exec -it k8s-c4-worker2 bash -c "apt-get install -y kubelet=1.29.3-1.1 kubectl=1.29.3-1.1 -qq > /dev/null 2>&1" 
 
 echo 'k8s-c4 cluster completed! 🚀\n'
