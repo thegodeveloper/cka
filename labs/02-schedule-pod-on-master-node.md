@@ -8,7 +8,7 @@ kubectl config use-context kind-k8s-c1
 
 ## Task Definition
 
-- Create a single Pod of image `httpd:2.4.41-alpine` in `default` namespace.
+- Create a single Pod of image `httpd:alpine3.20` in `default` namespace.
 - The Pod should be named `pod1` and the container should be named `pod1-container`.
 - This Pod should `only` be scheduled on a master node, do not add new labels to any nodes.
 - Shortly write the reason on why the Pods are by default not scheduled on master nodes into `master_schedule_reason.txt` file.
