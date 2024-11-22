@@ -72,6 +72,7 @@
 - [23 - Kubelet client/server cert info - 2%](labs/23-kubelet-client-server-cert-info.md)
 - [24 - NetworkPolicy - 9%](labs/24-networkpolicy.md)
 - [25 - Etcd Snapshot Save and Restore - 8%](labs/25-etcd-snapshot-save-and-restore.md)
+- [26 - HPA Auto-scaling - 6%](labs/26-hpa-auto-scaling.md)
 
 ## Notes
 

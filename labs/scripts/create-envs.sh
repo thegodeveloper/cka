@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-cd ../../
-
 ## Docker Configuration
 export DOCKER_CLI_HINTS=off
 
@@ -18,11 +16,10 @@ echo '\n🚜 Initializing the Kubernetes cluster: k8s-c1...'
 kubectl config use-context kind-k8s-c1 >/dev/null 2>&1 || true
 
 # Lab 03
-kubectl create namespace project-c13 >/dev/null 2>&1 || true
-kubectl apply -f yaml-definitions/statefulset-o3db.yaml >/dev/null 2>&1 || true
+kubectl apply -f yaml-definitions/3.yaml >/dev/null 2>&1 || true
 
 # Lab 04
-kubectl apply -f yaml-definitions/lab4-service-am-i-ready.yaml >/dev/null 2>&1 || true
+kubectl apply -f yaml-definitions/4.yaml >/dev/null 2>&1 || true
 
 # Lab 07
 helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/ >/dev/null 2>&1 || true
@@ -30,10 +27,10 @@ helm repo update >/dev/null 2>&1 || true
 helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metrics-server/metrics-server --namespace kube-system >/dev/null 2>&1 || true
 
 # Lab 10
-kubectl create namespace project-hamster >/dev/null 2>&1 || true
+kubectl apply -f yaml-definitions/10.yaml >/dev/null 2>&1 || true
 
 # Lab 06, 11, 12, 17
-kubectl create namespace project-tiger >/dev/null 2>&1 || true
+kubectl apply -f yaml-definitions/common.yaml >/dev/null 2>&1 || true
 
 # Lab 24
 kubectl create ns project-snake >/dev/null 2>&1 || true
@@ -124,6 +121,9 @@ docker exec -it k8s-c4-worker2 bash -c "mkdir -p -m 755 /etc/apt/keyrings"
 docker exec -it k8s-c4-worker2 bash -c "curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg >/dev/null 2>&1" 
 docker exec -it k8s-c4-worker2 bash -c "echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' > /etc/apt/sources.list.d/kubernetes.list" 
 docker exec -it k8s-c4-worker2 bash -c "apt-get update -qq > /dev/null 2>&1" 
-docker exec -it k8s-c4-worker2 bash -c "apt-get install -y kubelet=1.29.3-1.1 kubectl=1.29.3-1.1 -qq > /dev/null 2>&1" 
+docker exec -it k8s-c4-worker2 bash -c "apt-get install -y kubelet=1.29.3-1.1 kubectl=1.29.3-1.1 -qq > /dev/null 2>&1"
+
+# Question 26
+kubectl apply -f yaml-definitions/26.yaml >/dev/null 2>&1 || true
 
 echo '🚀 The Kubernetes cluster "k8s-c4" has been successfully prepared!\n'

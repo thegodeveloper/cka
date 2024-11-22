@@ -1,0 +1,7 @@
+---
+# Lab 06, 11, 12, 17
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: project-tiger
+spec: {}
