@@ -29,7 +29,8 @@ My strategy during the exam is to answer the highest scoring questions first and
 - Question 4 - 4%
 - Question 11 - 4%
 - Question 13 - 4%
-- Total: 35%
+- Question 27 - 4%
+- Total: 39%
 
 ### Group 3
 

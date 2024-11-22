@@ -73,6 +73,7 @@
 - [24 - NetworkPolicy - 9%](labs/24-networkpolicy.md)
 - [25 - Etcd Snapshot Save and Restore - 8%](labs/25-etcd-snapshot-save-and-restore.md)
 - [26 - HPA Auto-scaling - 6%](labs/26-hpa-auto-scaling.md)
+- [27 - Expose Deployment through NodePort - 4%](labs/27-expose-deployment-through-nodeport.md)
 
 ## Notes
 
