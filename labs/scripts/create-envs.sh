@@ -12,7 +12,7 @@ echo '--------------------------\n'
 
 kind create cluster --name k8s-c1 --config yaml-definitions/cluster.yaml
 
-echo '\nPreparing k8s-c1 cluster... 🚜'
+echo '\n🚜 Initializing the Kubernetes cluster: k8s-c1...'
 
 # Use context
 kubectl config use-context kind-k8s-c1 >/dev/null 2>&1 || true
@@ -43,7 +43,7 @@ kubectl -n project-snake run db2-0 --image=hashicorp/http-echo --labels app=db2 
 kubectl -n project-snake run vault-0 --image=hashicorp/http-echo --labels app=vault --port=3333 -- --text="vault secret storage" --listen=:3333 >/dev/null 2>&1 || true
 
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml >/dev/null 2>&1 || true
-echo 'k8s-c1 cluster completed! 🚀\n'
+echo '🚀 The Kubernetes cluster "k8s-c1" has been successfully prepared!\n'
 
 ####### Create k8s-c2 #######
 echo '--------------------------'
@@ -52,13 +52,13 @@ echo '--------------------------\n'
 
 kind create cluster --name k8s-c2 --config yaml-definitions/cluster.yaml
 
-echo '\nPreparing k8s-c2 cluster... 🚜'
+echo '\n🚜 Initializing the Kubernetes cluster: k8s-c2...'
 
 # Install vim
 docker exec -it k8s-c2-control-plane bash -c "apt update -qq > /dev/null 2>&1" 
 docker exec -it k8s-c2-control-plane bash -c "apt install vim -y -qq > /dev/null 2>&1" 
 
-echo 'k8s-c2 cluster completed! 🚀\n'
+echo '🚀 The Kubernetes cluster "k8s-c2" has been successfully prepared!\n'
 
 ####### Create k8s-c3 cluster #######
 echo '--------------------------'
@@ -67,7 +67,7 @@ echo '--------------------------\n'
 
 kind create cluster --name k8s-c3 --config yaml-definitions/cluster.yaml
 
-echo '\nPreparing k8s-c3 cluster... 🚜'
+echo '\n🚜 Initializing the Kubernetes cluster: k8s-c3...'
 
 # Install vim
 docker exec -it k8s-c3-worker bash -c "apt update -qq > /dev/null 2>&1" 
@@ -93,7 +93,7 @@ docker exec -it k8s-c3-control-plane bash -c "mv /tmp/etcd-download-test/etcdctl
 docker exec -it k8s-c3-control-plane bash -c "apt-get update -qq > /dev/null 2>&1" 
 docker exec -it k8s-c3-control-plane bash -c "apt-get install vim -y -qq > /dev/null 2>&1" 
 
-echo 'k8s-c3 cluster completed! 🚀\n'
+echo '🚀 The Kubernetes cluster "k8s-c3" has been successfully prepared!\n'
 
 ####### Create k8s-c4 cluster #######
 echo '--------------------------'
@@ -102,7 +102,7 @@ echo '--------------------------\n'
 
 kind create cluster --name k8s-c4 --config yaml-definitions/cluster.yaml
 
-echo '\nPreparing k8s-c4 cluster... 🚜'
+echo '\n🚜 Initializing the Kubernetes cluster: k8s-c4...'
 
 # Drain the k8s-c4-worker2 node
 kubectl drain k8s-c4-worker2 --ignore-daemonsets --delete-emptydir-data >/dev/null 2>&1 || true
@@ -126,4 +126,4 @@ docker exec -it k8s-c4-worker2 bash -c "echo 'deb [signed-by=/etc/apt/keyrings/k
 docker exec -it k8s-c4-worker2 bash -c "apt-get update -qq > /dev/null 2>&1" 
 docker exec -it k8s-c4-worker2 bash -c "apt-get install -y kubelet=1.29.3-1.1 kubectl=1.29.3-1.1 -qq > /dev/null 2>&1" 
 
-echo 'k8s-c4 cluster completed! 🚀\n'
+echo '🚀 The Kubernetes cluster "k8s-c4" has been successfully prepared!\n'
