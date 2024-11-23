@@ -71,14 +71,14 @@
 - [21 - Create a Static Pod and Service - 2%](labs/21-create-a-static-pod-and-service.md)
 - [22 - Check how long certificates are valid - 2%](labs/22-check-how-long-certificates-are-valid.md)
 - [23 - Kubelet client/server cert info - 2%](labs/23-kubelet-client-server-cert-info.md)
-- [24 - NetworkPolicy - 9%](labs/24-networkpolicy.md)
+- [24 - Network Policy Egress - 9%](labs/24-networkpolicy-egress.md)
 - [25 - Etcd Snapshot Save and Restore - 8%](labs/25-etcd-snapshot-save-and-restore.md)
 - [26 - HPA Auto-scaling - 6%](labs/26-hpa-auto-scaling.md)
 - [27 - Expose Deployment through NodePort - 4%](labs/27-expose-deployment-through-nodeport.md)
 - [28 - Pod Troubleshooting - 3%](labs/28-pod-troubleshooting.md)
 - [29 - Deploying a Pod with Specifications - 6%](labs/29-deploying-a-pod-with-specifications.md)
 - [30 - Schedule Pod in Node - 2%](labs/30-schedule-pod-in-node.md)
-- [31 - Network Policy - 4%](labs/31-networkpolicy.md)
+- [31 - Network Policy Ingress- 4%](labs/31-networkpolicy-ingress.md)
 
 ## ToDo
 

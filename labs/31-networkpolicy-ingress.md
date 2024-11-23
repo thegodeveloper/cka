@@ -1,4 +1,4 @@
-# Question 31 - Network Policy - 4%
+# Question 31 - Network Policy Ingress - 4%
 
 ## Use context
 

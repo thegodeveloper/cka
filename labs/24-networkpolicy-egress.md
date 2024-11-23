@@ -1,4 +1,4 @@
-# Question 24 - NetworkPolicy - 9%
+# Question 24 - Network Policy Egress - 9%
 
 ## Use context
 
@@ -9,7 +9,7 @@ kubectl config use-context kind-k8s-c1
 ## Task Definition
 
 - There was a security incident where an intruder was able to access the whole cluster from a single hacked backend Pod.
-- To prevent this create a `NetworkPolicy` called `np-backend` in Namespace `project-snake`. It should allow the `backend-*` Pods only to:
+- To prevent this create a `NetworkPolicy` called `np-backend` in Namespace project-snake. It should allow the `backend-*` Pods only to:
   - connect to `db1-*` Pods on port `1111`.
   - connect to `db2-*` Pods on port `2222`.
 - Use the `app` label of Pods in your policy.
@@ -21,17 +21,6 @@ kubectl config use-context kind-k8s-c1
   <summary>Show the solution</summary>
 
 ### Validate existing Pods and their labels
-
-```shell
-k -n project-snake get pod
-NAME        READY   STATUS    RESTARTS   AGE
-backend-0   1/1     Running   0          52s
-db1-0       1/1     Running   0          42s
-db2-0       1/1     Running   0          31s
-vault-0     1/1     Running   0          20s
-```
-
-### Validate the labels of the Pods
 
 ```shell
 k -n project-snake get pod -L app
@@ -97,7 +86,6 @@ spec:
     ports:
     - protocol: TCP
       port: 2222
-
 ```
 
 ### Apply the NetworkPolicy
