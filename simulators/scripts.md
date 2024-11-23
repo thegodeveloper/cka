@@ -2,7 +2,7 @@
 
 ## List of clusters
 
-- `kind-k8s-c1` - Labs [02, 03, 04, 05, 06, 07, 08, 10, 11, 12, 13, 14, 16, 17, 24]
+- `kind-k8s-c1` - Labs [02, 03, 04, 05, 06, 07, 08, 10, 11, 12, 13, 14, 16, 17, 24, 31]
 - `kind-k8s-c2` - Labs [09, 15, 22, 23]
 - `kind-k8s-c3` - Labs [18, 19, 25]
 - `kind-k8s-c4` - Labs [20, 21, 26, 27, 28, 30]
@@ -32,7 +32,8 @@ My strategy during the exam is to answer the highest scoring questions first and
 - Question 11 - 4%
 - Question 13 - 4%
 - Question 27 - 4%
-- Total: 39%
+- Question 31 - 4%
+- Total: 43%
 
 ### Group 3
 

@@ -20,7 +20,6 @@ kubectl config use-context kind-k8s-c1
 <details>
   <summary>Show the solution</summary>
 
-
 ### Validate existing Pods and their labels
 
 ```shell

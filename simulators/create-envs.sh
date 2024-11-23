@@ -40,6 +40,12 @@ kubectl -n project-snake run db2-0 --image=hashicorp/http-echo --labels app=db2 
 kubectl -n project-snake run vault-0 --image=hashicorp/http-echo --labels app=vault --port=3333 -- --text="vault secret storage" --listen=:3333 >/dev/null 2>&1 || true
 
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml >/dev/null 2>&1 || true
+
+# Lab 31
+kubectl run frontend --image=alpine/curl --labels app=frontend --command -- /bin/sh -c "while true; do sleep 3600; done" >/dev/null 2>&1 || true
+kubectl run application --image=alpine/curl --labels app=application --command -- /bin/sh -c "while true; do sleep 3600; done" >/dev/null 2>&1 || true
+kubectl run backend --image=hashicorp/http-echo --labels app=backend --port=3333 -- --text="backend tier" --listen=:3333 >/dev/null 2>&1 || true
+
 echo '🚀 The Kubernetes cluster "k8s-c1" has been successfully prepared!\n'
 
 ####### Create k8s-c2 #######

@@ -78,6 +78,7 @@
 - [28 - Pod Troubleshooting - 3%](labs/28-pod-troubleshooting.md)
 - [29 - Deploying a Pod with Specifications - 6%](labs/29-deploying-a-pod-with-specifications.md)
 - [30 - Schedule Pod in Node - 2%](labs/30-schedule-pod-in-node.md)
+- [31 - Network Policy - 4%](labs/31-networkpolicy.md)
 
 ## ToDo
 
