@@ -79,6 +79,7 @@
 - [29 - Deploying a Pod with Specifications - 6%](labs/29-deploying-a-pod-with-specifications.md)
 - [30 - Schedule Pod in Node - 2%](labs/30-schedule-pod-in-node.md)
 - [31 - Network Policy Ingress- 4%](labs/31-networkpolicy-ingress.md)
+- [32 - Network Policy Namespaces - 4%](labs/32-networkpolicy-namespaces.md)
 
 ## ToDo
 

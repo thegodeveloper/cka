@@ -46,6 +46,15 @@ kubectl run frontend --image=alpine/curl --labels app=frontend --command -- /bin
 kubectl run application --image=alpine/curl --labels app=application --command -- /bin/sh -c "while true; do sleep 3600; done" >/dev/null 2>&1 || true
 kubectl run backend --image=hashicorp/http-echo --labels app=backend --port=3333 -- --text="backend tier" --listen=:3333 >/dev/null 2>&1 || true
 
+# Lab 32
+kubectl create ns project-a >/dev/null 2>&1 || true
+kubectl -n project-a run backend --image=hashicorp/http-echo --labels app=backend --port=3333 -- --text="backend tier" --listen=:3333 >/dev/null 2>&1 || true
+kubectl create ns project-b >/dev/null 2>&1 || true
+kubectl -n project-b run web --image=alpine/curl --labels app=web --command -- /bin/sh -c "while true; do sleep 3600; done" >/dev/null 2>&1 || true
+kubectl -n project-b run service01 --image=alpine/curl --labels app=service01 --command -- /bin/sh -c "while true; do sleep 3600; done" >/dev/null 2>&1 || true
+kubectl create ns project-c >/dev/null 2>&1 || true
+kubectl -n project-c run application --image=alpine/curl --labels app=application --command -- /bin/sh -c "while true; do sleep 3600; done" >/dev/null 2>&1 || true
+
 echo '🚀 The Kubernetes cluster "k8s-c1" has been successfully prepared!\n'
 
 ####### Create k8s-c2 #######
