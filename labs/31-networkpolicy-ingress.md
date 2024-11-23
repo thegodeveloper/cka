@@ -110,7 +110,4 @@ k exec application -- curl -s 10.244.88.195:3333
 backend tier
 ````
 
-
-
-
 </details>

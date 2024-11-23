@@ -55,6 +55,9 @@ kubectl -n project-b run service01 --image=alpine/curl --labels app=service01 --
 kubectl create ns project-c >/dev/null 2>&1 || true
 kubectl -n project-c run application --image=alpine/curl --labels app=application --command -- /bin/sh -c "while true; do sleep 3600; done" >/dev/null 2>&1 || true
 
+# Lab 33
+kubectl apply -f yaml-definitions/33.yaml >/dev/null 2>&1 || true
+
 echo '🚀 The Kubernetes cluster "k8s-c1" has been successfully prepared!\n'
 
 ####### Create k8s-c2 #######
