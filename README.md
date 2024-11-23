@@ -77,6 +77,7 @@
 - [27 - Expose Deployment through NodePort - 4%](labs/27-expose-deployment-through-nodeport.md)
 - [28 - Pod Troubleshooting - 3%](labs/28-pod-troubleshooting.md)
 - [29 - Deploying a Pod with Specifications - 6%](labs/29-deploying-a-pod-with-specifications.md)
+- [30 - Schedule Pod in Node - 2%](labs/30-schedule-pod-in-node.md)
 
 ## ToDo
 

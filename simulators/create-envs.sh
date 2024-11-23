@@ -136,10 +136,11 @@ echo '--------------------------'
 echo '👉 creating k8s-c5 cluster'
 echo '--------------------------\n'
 
-kind create cluster --name k8s-c5 --config yaml-definitions/cluster-one-worker.yaml
+kind create cluster --name k8s-c5 --config yaml-definitions/cluster.yaml
 
 echo '\n🚜 Initializing the Kubernetes cluster: k8s-c5...'
 
 kubectl taint nodes k8s-c5-worker node-role.kubernetes.io/node=:NoSchedule >/dev/null 2>&1 || true
+kubectl cordon k8s-c5-worker2 >/dev/null 2>&1 || true
 
 echo '🚀 The Kubernetes cluster "k8s-c5" has been successfully prepared!\n'
