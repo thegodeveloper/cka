@@ -81,7 +81,7 @@
 - [31 - Network Policy Ingress- 4%](labs/31-networkpolicy-ingress.md)
 - [32 - Network Policy Namespaces - 4%](labs/32-networkpolicy-namespaces.md)
 - [33 - Multi-Containers Sidecar - 4%](labs/33-multi-containers-sidecar.md)
-- [34 - CronJobs - 2%](34-cronjobs.md)
+- [34 - CronJobs - 2%](labs/34-cronjobs.md)
 
 ## ToDo
 
