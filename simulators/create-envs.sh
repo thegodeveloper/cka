@@ -80,7 +80,7 @@ START_IP="${A}.${B}.${C}.200"
 END_IP="${A}.${B}.${C}.250"
 
 # Create the MetalLB configuration file
-cat <<EOF > yaml-definitions/metallb-ip-address-pool.yaml
+kubectl apply -f - << EOF
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
@@ -89,13 +89,10 @@ metadata:
 spec:
   addresses:
   - ${START_IP}-${END_IP}
-EOF
-
-# Apply the MetalLB IP Address Pool to Kubernetes
-kubectl apply -f yaml-definitions/metallb-ip-address-pool.yaml >/dev/null 2>&1 || true
+EOF >/dev/null 2>&1 || true
 
 # Create the L2 configuration
-cat <<EOF > yaml-definitions/metallb-l2-config.yaml
+kubectl apply -f - << EOF
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
 metadata:
@@ -104,7 +101,7 @@ metadata:
 spec:
   ipAddressPools:
   - lb-pool
-EOF
+EOF >/dev/null 2>&1 || true
 
 # Apply the MetalLB L2 Configuration to Kubernetes
 kubectl apply -f yaml-definitions/metallb-l2-config.yaml >/dev/null 2>&1 || true
