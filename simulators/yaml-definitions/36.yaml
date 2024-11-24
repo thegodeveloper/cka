@@ -4,12 +4,41 @@ kind: Namespace
 metadata:
   name: world
 ---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: europe-index
+  namespace: world
+data:
+  index.html: |
+    <html>
+    <head><title>Europe Nginx</title></head>
+    <body>
+    <h1>Hello, you reached EUROPE Nginx Server!</h1>
+    </body>
+    </html>
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: asia-index
+  namespace: world
+data:
+  index.html: |
+    <html>
+    <head><title>Asia Nginx</title></head>
+    <body>
+    <h1>Hello, you reached ASIA Nginx Server!</h1>
+    </body>
+    </html>
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
     app: asia
   name: asia
+  namespace: world
 spec:
   replicas: 1
   selector:
@@ -27,6 +56,14 @@ spec:
         ports:
         - containerPort: 80
         resources: {}
+        volumeMounts:
+          - name: asia-content
+            mountPath: /usr/share/nginx/html/index.html
+            subPath: index.html
+      volumes:
+        - name: asia-content
+          configMap:
+            name: asia-index
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -34,6 +71,7 @@ metadata:
   labels:
     app: europe
   name: europe
+  namespace: world
 spec:
   replicas: 1
   selector:
@@ -51,3 +89,11 @@ spec:
         ports:
         - containerPort: 80
         resources: {}
+        volumeMounts:
+          - name: europe-content
+            mountPath: /usr/share/nginx/html/index.html
+            subPath: index.html
+      volumes:
+        - name: europe-content
+          configMap:
+            name: europe-index

@@ -59,10 +59,67 @@ kubectl -n project-c run application --image=alpine/curl --labels app=applicatio
 kubectl apply -f yaml-definitions/33.yaml >/dev/null 2>&1 || true
 
 # Lab 36
+helm repo add metallb https://metallb.github.io/metallb >/dev/null 2>&1 || true
+helm install metallb metallb/metallb -n metallb-system --create-namespace
+
+# Extract the Kind network subnet
+KIND_NETWORK=$(docker network inspect kind | jq -r '.[].IPAM.Config[].Subnet' | grep -E '^[0-9]')
+
+# Verify the KIND_NETWORK is set
+if [[ -z "$KIND_NETWORK" ]]; then
+  echo "Error: KIND_NETWORK is empty. Ensure Kind is running and the subnet is configured."
+  exit 1
+fi
+
+# Calculate the address range for MetalLB
+IFS='/' read -r NETWORK_PREFIX NETWORK_MASK <<< "$KIND_NETWORK"
+IFS='.' read -r A B C D <<< "$NETWORK_PREFIX"
+
+# Use the last octet of the prefix to create an IP range
+START_IP="${A}.${B}.${C}.200"
+END_IP="${A}.${B}.${C}.250"
+
+# Create the MetalLB configuration file
+cat <<EOF > yaml-definitions/metallb-ip-address-pool.yaml
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: lb-pool
+  namespace: metallb-system
+spec:
+  addresses:
+  - ${START_IP}-${END_IP}
+EOF
+
+# Apply the MetalLB IP Address Pool to Kubernetes
+kubectl apply -f yaml-definitions/metallb-ip-address-pool.yaml >/dev/null 2>&1 || true
+
+# Create the L2 configuration
+cat <<EOF > yaml-definitions/metallb-l2-config.yaml
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: lb-l2-advertisement
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - lb-pool
+EOF
+
+# Apply the MetalLB L2 Configuration to Kubernetes
+kubectl apply -f yaml-definitions/metallb-l2-config.yaml >/dev/null 2>&1 || true
+
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx >/dev/null 2>&1 || true
 helm repo update >/dev/null 2>&1 || true
 helm install ingress-nginx ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace --set controller.hostNetwork=true --set controller.kind=DaemonSet >/dev/null 2>&1 || true
+
 kubectl apply -f yaml-definitions/36.yaml >/dev/null 2>&1 || true
+
+# Create entry in /etc/hosts for every node in the cluster
+INGRESS_LB_IP=$(kubectl -n ingress-nginx get svc ingress-nginx-controller -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+docker exec -it k8s-c1-control-plane bash -c "echo '$INGRESS_LB_IP world.universe.mine' >> /etc/hosts" >/dev/null 2>&1 || true
+docker exec -it k8s-c1-worker bash -c "echo '$INGRESS_LB_IP world.universe.mine' >> /etc/hosts" >/dev/null 2>&1 || true
+docker exec -it k8s-c1-worker2 bash -c "echo '$INGRESS_LB_IP world.universe.mine' >> /etc/hosts" >/dev/null 2>&1 || true
 
 echo '🚀 The Kubernetes cluster "k8s-c1" has been successfully prepared!\n'
 
