@@ -91,7 +91,7 @@ spec:
   - ${START_IP}-${END_IP}
 EOF
 
-kubectl -n metallb-system wait --for=condition=Ready pods --all --timeout=300s
+kubectl -n metallb-system wait --for=condition=Ready pods --all --timeout=300s >/dev/null 2>&1 || true
 
 # Apply the MetalLB IP Address Pool to Kubernetes
 kubectl apply -f yaml-definitions/metallb-ip-address-pool.yaml >/dev/null 2>&1 || true
