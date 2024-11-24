@@ -1,0 +1,53 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: world
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: asia
+  name: asia
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: asia
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: asia
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: europe
+  name: europe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: europe
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: europe
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}

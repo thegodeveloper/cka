@@ -83,6 +83,7 @@
 - [33 - Multi-Containers Sidecar - 4%](labs/33-multi-containers-sidecar.md)
 - [34 - CronJobs - 2%](labs/34-cronjobs.md)
 - [35 - Schedulable Nodes - 1%](labs/35-schedulable-nodes.md)
+- [36 - Ingress for Deployments - 6%](labs/36-ingress-for-deployments.md)
 
 ## ToDo
 

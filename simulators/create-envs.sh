@@ -58,6 +58,12 @@ kubectl -n project-c run application --image=alpine/curl --labels app=applicatio
 # Lab 33
 kubectl apply -f yaml-definitions/33.yaml >/dev/null 2>&1 || true
 
+# Lab 36
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx >/dev/null 2>&1 || true
+helm repo update >/dev/null 2>&1 || true
+helm install ingress-nginx ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace --set controller.hostNetwork=true --set controller.kind=DaemonSet >/dev/null 2>&1 || true
+kubectl apply -f yaml-definitions/36.yaml >/dev/null 2>&1 || true
+
 echo '🚀 The Kubernetes cluster "k8s-c1" has been successfully prepared!\n'
 
 ####### Create k8s-c2 #######
