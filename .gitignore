@@ -72,3 +72,5 @@ crowded-namespace.txt
 logs.txt
 nodes.txt
 36.yaml
+**/metallb-ip-address-pool.yaml
+**/metallb-l2-config.yaml
