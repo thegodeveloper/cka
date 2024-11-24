@@ -82,6 +82,7 @@
 - [32 - Network Policy Namespaces - 4%](labs/32-networkpolicy-namespaces.md)
 - [33 - Multi-Containers Sidecar - 4%](labs/33-multi-containers-sidecar.md)
 - [34 - CronJobs - 2%](labs/34-cronjobs.md)
+- [35 - Schedulable Nodes - 1%](labs/35-schedulable-nodes.md)
 
 ## ToDo
 
