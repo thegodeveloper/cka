@@ -60,7 +60,7 @@ kubectl apply -f yaml-definitions/33.yaml >/dev/null 2>&1 || true
 
 # Lab 36
 helm repo add metallb https://metallb.github.io/metallb >/dev/null 2>&1 || true
-helm install metallb metallb/metallb -n metallb-system --create-namespace
+helm install metallb metallb/metallb -n metallb-system --create-namespace >/dev/null 2>&1 || true
 
 # Extract the Kind network subnet
 KIND_NETWORK=$(docker network inspect kind | jq -r '.[].IPAM.Config[].Subnet' | grep -E '^[0-9]')
@@ -80,7 +80,7 @@ START_IP="${A}.${B}.${C}.200"
 END_IP="${A}.${B}.${C}.250"
 
 # Create the MetalLB configuration file
-kubectl apply -f - << EOF
+cat <<EOF > yaml-definitions/metallb-ip-address-pool.yaml
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
@@ -89,19 +89,12 @@ metadata:
 spec:
   addresses:
   - ${START_IP}-${END_IP}
-EOF >/dev/null 2>&1 || true
+EOF
 
-# Create the L2 configuration
-kubectl apply -f - << EOF
-apiVersion: metallb.io/v1beta1
-kind: L2Advertisement
-metadata:
-  name: lb-l2-advertisement
-  namespace: metallb-system
-spec:
-  ipAddressPools:
-  - lb-pool
-EOF >/dev/null 2>&1 || true
+kubectl -n metallb-system wait --for=condition=Ready pods --all --timeout=300s
+
+# Apply the MetalLB IP Address Pool to Kubernetes
+kubectl apply -f yaml-definitions/metallb-ip-address-pool.yaml >/dev/null 2>&1 || true
 
 # Apply the MetalLB L2 Configuration to Kubernetes
 kubectl apply -f yaml-definitions/metallb-l2-config.yaml >/dev/null 2>&1 || true

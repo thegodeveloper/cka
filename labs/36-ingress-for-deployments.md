@@ -14,8 +14,8 @@ kubectl config use-context kind-k8s-c1
 - The `Nginx Ingress Controller` is currently installed in the cluster.
 - Create a new `ingress` resource called `world` for domain name `world.universe.mine`. The domain points to the Kubernetes Node IP via `/etc/hosts`.
 - The `ingress` resource should have two routes pointing to the existing `Services`.
-- http://world.universe.mine:30080/europe/
-- http://world.universe.mine:30080/asia/
+- http://world.universe.mine/europe/
+- http://world.universe.mine/asia/
 
 ## Solution
 
