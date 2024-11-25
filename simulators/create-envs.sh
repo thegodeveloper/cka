@@ -162,6 +162,9 @@ docker exec -it k8s-c3-worker bash -c "systemctl daemon-reload"
 docker exec -it k8s-c3-worker bash -c "systemctl stop kubelet" 
 docker exec -it k8s-c3-worker bash -c "systemctl start kubelet" 
 
+# Lab 19
+kubectl create ns secret > /dev/null 2>&1
+
 # Lab 25 Etcd Backup
 docker exec -it k8s-c3-control-plane bash -c "curl -L https://storage.googleapis.com/etcd/v3.5.17/etcd-v3.5.17-linux-amd64.tar.gz -o /tmp/etcd-v3.5.17-linux-amd64.tar.gz >/dev/null 2>&1" 
 docker exec -it k8s-c3-control-plane bash -c "mkdir /tmp/etcd-download-test" 
