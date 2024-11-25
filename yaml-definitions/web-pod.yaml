@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-pod
+spec:
+  volumes:
+    - name: workdir
+      emptyDir: {}
+  containers:
+  - name: web-pod
+    image: gcr.io/google-containers/nginx
+    command: ["/bin/sh", "-c", "if [ -f /workdir/conf.txt ]; then sleep 10000; else exit 1; fi"]
+    volumeMounts:
+      - mountPath: /workdir
+        name: workdir
