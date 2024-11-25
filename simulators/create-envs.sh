@@ -132,6 +132,11 @@ docker exec -it k8s-c2-control-plane bash -c "apt install vim -y -qq > /dev/null
 # Lab 38
 kubectl create namespace sales >/dev/null 2>&1 || true
 
+# Lab 39
+kubectl cordon k8s-c2-worker >/dev/null 2>&1 || true
+kubectl create deploy docs-app --image=gcr.io/google-containers/nginx --replicas=3 >/dev/null 2>&1 || true
+kubectl uncordon k8s-c2-worker >/dev/null 2>&1 || true
+
 echo '🚀 The Kubernetes cluster "k8s-c2" has been successfully prepared!\n'
 
 ####### Create k8s-c3 cluster #######
