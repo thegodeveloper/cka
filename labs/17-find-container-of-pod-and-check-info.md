@@ -8,7 +8,6 @@ kubectl config use-context kind-k8s-c1
 
 ## Task Definition
 
-- Create a namespace `project-tiger`.
 - Create a Pod named `tigers-reunite` in namespace `project-tiger` of image `httpd:2.4.41-alpine` with labels `pod=container` and `container=pod`.
 - Find out which node the Pod is scheduled.
 - SSH into that node and find the containerd container belonging to that Pod.
