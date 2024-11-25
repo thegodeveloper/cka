@@ -11,7 +11,7 @@ kubectl config use-context kind-k8s-c1
 - Create a Pod named `multi-container-playground` in Namespace `default` with three containers.
 - Name the containers `c1`, `c2` and `c3`.
 - There should be a volume attached to that Pod and mounted into every container, but the volume shouldn't be persisted or shared with other Pods.
-- Container `c1` should be of image `ningx:1.17.6-alpine` and have the name of the node where its Pod is running available as environment variable `MY_NODE_NAME`.
+- Container `c1` should be of image `gcr.io/google-containers/nginx` and have the name of the node where its Pod is running available as environment variable `MY_NODE_NAME`.
 - Container `c2` should be of image `busybox:1.31.1` and write the output of the `date` command every second in the shared volume into file `date.log`.
 - You can use `while true; do date >> /your/vol/path/date.log; sleep 1; done`.
 - Container `c3` should be of image `busybox:1.31.1` and constantly send the content of file `date.log` from the shared volume to stdout.
@@ -26,7 +26,7 @@ kubectl config use-context kind-k8s-c1
 ### Create the Pod YAML Template
 
 ```shell
-k run multi-container-playground --image=nginx:1.17.6-alpine -o yaml --dry-run=client > 13.yaml
+k run multi-container-playground --image=gcr.io/google-containers/nginx -o yaml --dry-run=client > 13.yaml
 ```
 
 ### YAML Definition Content
@@ -47,7 +47,7 @@ metadata:
   name: multi-container-playground
 spec:
   containers:
-  - image: nginx:1.17.6-alpine
+  - image: gcr.io/google-containers/nginx
     name: c1
     env:
       - name: MY_NODE_NAME
@@ -114,12 +114,4 @@ Fri Oct 25 02:01:59 UTC 2024
 Fri Oct 25 02:02:00 UTC 2024
 ```
 
-## Clean the Environment
-
-### Delete the Pod
-
-```shell
-k delete pod multi-container-playground
-pod "multi-container-playground" deleted
-```
 </details>

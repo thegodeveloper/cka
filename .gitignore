@@ -19,6 +19,7 @@ context_default_no_kubectl.sh
 master_schedule_reason.txt
 
 # pod ready if service is reachable
+4.yaml
 4_pod1.yaml
 
 # kubectl sorting
@@ -37,7 +38,7 @@ find_pods_uid.sh
 7-pod.sh
 
 8-master-components.txt
-
+9.yaml
 11.yaml
 12.yaml
 13.yaml
