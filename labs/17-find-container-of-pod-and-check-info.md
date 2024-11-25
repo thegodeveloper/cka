@@ -38,7 +38,7 @@ k -n project-tiger get pod tigers-reunite -o jsonpath='{.spec.nodeName}'
 k8s-c1-worker2
 ```
 
-### Get the container ID
+### Get the container ID and runtimeType
 
 ```shell
 docker exec -it k8s-c1-worker2 bash
