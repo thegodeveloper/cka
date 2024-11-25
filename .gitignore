@@ -50,6 +50,8 @@ namespaced_resources.txt
 crowded-namespace.txt
 
 17.yaml
+pod-container.log
+pod-container.txt
 18.yaml
 18-reason.txt
 18-pod.yaml

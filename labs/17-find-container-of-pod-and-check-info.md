@@ -35,6 +35,27 @@ pod/tigers-reunite created
 
 ```shell
 k -n project-tiger get pod tigers-reunite -o jsonpath='{.spec.nodeName}'
-devops-pool-g8373
+k8s-c1-worker2
 ```
+
+### Get the container ID
+
+```shell
+docker exec -it k8s-c1-worker2 bash
+root@k8s-c1-worker2:/# crictl ps | grep tigers-reunite
+cc5de89e8bef6       54b0995a63052       10 minutes ago      Running             tigers-reunite            0                   afe418e658adc       tigers-reunite
+```
+
+```shell
+docker exec -it k8s-c1-worker2 bash
+root@k8s-c1-worker2:/# crictl inspect cc5de89e8bef6 | grep runtimeType
+    "runtimeType": "io.containerd.runc.v2",
+```
+
+### Write the information to pod-container.log
+
+```shell
+echo 'cc5de89e8bef6 io.containerd.runc.v2' > pod-container.log
+```
+
 </details>
