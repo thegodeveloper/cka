@@ -1,0 +1,50 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: management
+spec: {}
+---
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: level2
+value: 2000000
+globalDefault: false
+description: "This priority class should be used for level2 service pods only."
+---
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: level3
+value: 3000000
+globalDefault: false
+description: "This priority class should be used for level3 service pods only."
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-web
+  labels:
+    app: webserver
+  namespace: management
+spec:
+  containers:
+    - name: nginx
+      image: gcr.io/google-containers/nginx
+      imagePullPolicy: IfNotPresent
+  priorityClassName: level2
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-app
+  labels:
+    app: appserver
+  namespace: management
+spec:
+  containers:
+    - name: nginx
+      image: gcr.io/google-containers/nginx
+      imagePullPolicy: IfNotPresent
+  priorityClassName: level3
