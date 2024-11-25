@@ -127,7 +127,10 @@ echo '\n🚜 Initializing the Kubernetes cluster: k8s-c2...'
 
 # Install vim
 docker exec -it k8s-c2-control-plane bash -c "apt update -qq > /dev/null 2>&1" 
-docker exec -it k8s-c2-control-plane bash -c "apt install vim -y -qq > /dev/null 2>&1" 
+docker exec -it k8s-c2-control-plane bash -c "apt install vim -y -qq > /dev/null 2>&1"
+
+# Lab 38
+kubectl create namespace sales >/dev/null 2>&1 || true
 
 echo '🚀 The Kubernetes cluster "k8s-c2" has been successfully prepared!\n'
 

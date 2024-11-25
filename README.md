@@ -85,6 +85,7 @@
 - [35 - Schedulable Nodes - 1%](labs/35-schedulable-nodes.md)
 - [36 - Ingress for Deployments - 6%](labs/36-ingress-for-deployments.md)
 - [37 - Find a Pod with highest Priority Class - 2%](labs/37-find-pod-with-highest-priorityclass.md)
+- [38 - Cordon and Node - 4%](labs/38-cordon-and-node.md)
 
 ## ToDo
 
