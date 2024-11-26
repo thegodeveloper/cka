@@ -11,7 +11,7 @@ kubectl config use-context kind-k8s-c2
 - Add an `init container` named `init-container` (which has been defined in the spec file in `yaml-definitions/web-pod.yaml`).
 - The init container should create an empty file named `/workdir/conf.txt`.
 - If `/workdir/conf.txt` is not detected, the Pod should exit.
-- Once the spec file hast been updated with the init container definition, the Pod should be created.
+- Once the spec file has been updated with the init container definition, the Pod should be created.
 
 ## Solution
 
