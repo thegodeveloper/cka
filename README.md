@@ -5,7 +5,7 @@
 - Linux.
 - Docker Desktop. (With Docker Engine is enough).
 - Kind k8s. [here](https://kind.sigs.k8s.io/),
-- Terminal, kubectl, vim, jq.
+- Terminal, kubectl, vim, jq, Helm.
 
 ## Notes
 

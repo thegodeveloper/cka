@@ -129,7 +129,7 @@ spec:
           name: data
 ```
 
-#### Create the Deployment YAML Definition
+### Create the Deployment YAML Definition
 
 ```shell
 k -n project-tiger create deploy safari --image=httpd:2.4.41-alpine -o yaml --dry-run=client > 6-deploy.yaml
