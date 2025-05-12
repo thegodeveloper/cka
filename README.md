@@ -92,7 +92,6 @@
 ## ToDo
 
 - Migrate the labs to version `1.31`.
-- Add Helm questions.
 - Link questions with documentation.
 
 
